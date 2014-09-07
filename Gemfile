@@ -41,6 +41,5 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 group :development do
-  gem 'mailcatcher'
   gem 'quiet_assets'
 end
