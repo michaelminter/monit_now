@@ -1,0 +1,45 @@
+<%= simple_form_for(@account) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+
+    <div class="field">
+      <%= f.label :account_type_id, 'Account Type' -%>
+      <%= f.error :account_type_id -%><br />
+      <%= f.collection_radio_buttons :account_type_id, [[1, 'Free'], [2, 'Personal'], [3, 'Premiere'], [4, 'Business']], :first, :last %>
+    </div>
+
+    <%= f.simple_fields_for :users do |user_form| %>
+      <%= user_form.error_notification %>
+
+      <div class="field">
+        <%= user_form.label :full_name %>
+        <%= user_form.error :full_name %><br />
+        <%= user_form.input_field :full_name %>
+      </div>
+
+      <div class="field">
+        <%= user_form.label :email %>
+        <%= user_form.error :email %><br />
+        <%= user_form.email_field :email %>
+      </div>
+
+      <div class="field">
+        <%= user_form.label :password %>
+        <%= user_form.error :password %><br />
+        <%= user_form.password_field :password %>
+      </div>
+
+      <div class="field">
+        <%= user_form.label :password_confirmation %>
+        <%= user_form.error :password_confirmation %><br />
+        <%= user_form.password_field :password_confirmation %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+
+<% end %>

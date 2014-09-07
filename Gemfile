@@ -14,6 +14,7 @@ gem 'coffee-rails', '~> 4.0.0'
 
 gem 'devise'
 gem 'mongoid', '~> 4.0.0'
+gem 'simple_form'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

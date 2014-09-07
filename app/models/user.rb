@@ -1,5 +1,7 @@
 class User
   include Mongoid::Document
+  include Mongoid::Timestamps
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -35,10 +37,9 @@ class User
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
 
-  field :account_id, type: Integer
   field :full_name,  type: String
 
-  # belongs_to :account
+  belongs_to :account
 
-  validates_presence_of :account_id, :email
+  validates_presence_of :email
 end
