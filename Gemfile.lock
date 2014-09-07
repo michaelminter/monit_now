@@ -89,6 +89,8 @@ GEM
     origin (2.1.1)
     orm_adapter (0.5.0)
     polyglot (0.3.5)
+    quiet_assets (1.0.3)
+      railties (>= 3.1, < 5.0)
     rack (1.5.2)
     rack-protection (1.5.3)
       rack
@@ -174,6 +176,7 @@ DEPENDENCIES
   jquery-rails
   mailcatcher
   mongoid (~> 4.0.0)
+  quiet_assets
   rails (= 4.1.1)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)

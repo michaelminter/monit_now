@@ -9,7 +9,7 @@
       <%= f.collection_radio_buttons :account_type_id, [[1, 'Free'], [2, 'Personal'], [3, 'Premiere'], [4, 'Business']], :first, :last %>
     </div>
 
-    <%= f.simple_fields_for :users do |user_form| %>
+    <%= f.simple_fields_for :user do |user_form| %>
       <%= user_form.error_notification %>
 
       <div class="field">

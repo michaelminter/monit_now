@@ -42,4 +42,5 @@ gem 'spring',        group: :development
 
 group :development do
   gem 'mailcatcher'
+  gem 'quiet_assets'
 end

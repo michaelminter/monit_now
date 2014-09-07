@@ -15,7 +15,7 @@ class AccountsController < ApplicationController
   # GET /accounts/new
   def new
     @account = Account.new
-    @account.users.build # build a blank user or the child form won't display
+    # @account.users.build # build a blank user or the child form won't display
     @account_types = AccountType.all
   end
 
@@ -26,10 +26,21 @@ class AccountsController < ApplicationController
   # POST /accounts
   # POST /accounts.json
   def create
-    @account = Account.new(account_params)
+    @account = Account.new(:account_type_id => account_params[:account_type_id])
+
+    user     = User.new(user_params)
+    unless user.valid?
+      flash[:notice] = 'User invalid'
+      render :new
+      return
+    end
 
     respond_to do |format|
       if @account.save
+        if user.save
+          AccountUser.create({ :account_id => @account.id, :user_id => user.id })
+        end
+
         format.html { redirect_to @account, notice: 'Account was successfully created.' }
         format.json { render :show, status: :created, location: @account }
       else
@@ -71,6 +82,10 @@ class AccountsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def account_params
-      params.require(:account).permit(:name)
+      params.require(:account).permit!
+    end
+
+    def user_params
+      params.require(:account).permit(:user => [ :full_name, :email, :password, :password_confirmation ])[:user]
     end
 end

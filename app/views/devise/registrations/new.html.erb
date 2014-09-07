@@ -3,11 +3,16 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
+  <div>
+    <label>Account Type</label><br />
+    <input type="text" name="account_type_id" value="1" />
+  </div>
 
   <div><%= f.label :full_name %><br />
-    <%= f.email_field :full_name %></div>
+    <%= f.text_field :full_name %></div>
+
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email, autofocus: true %></div>
 
   <div><%= f.label :password %> <% if @validatable %><i>(<%= @minimum_password_length %> characters minimum)</i><% end %><br />
     <%= f.password_field :password, autocomplete: "off" %></div>

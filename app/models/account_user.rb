@@ -4,4 +4,7 @@ class AccountUser
 
   field :account_id, type: Integer
   field :user_id,    type: Integer
+
+  belongs_to :account
+  belongs_to :user
 end
