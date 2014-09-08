@@ -1,6 +1,6 @@
 == README
 
-Installing with yum package manager (Redhat, CentOS, etc)
+Installing with yum package manager (Redhat, CentOS, Fedora, etc)
 ```
 yum install monit
 ```
@@ -13,6 +13,27 @@ apt-get install monit
 Installing with Pacman package manager (Arch Linux)
 ```
 pacman -S monit
+```
+
+FreeBSD
+```
+cd /usr/ports/sysutils/monit
+make
+make install
+```
+
+On openSUSE 10.3
+```
+yast2 -i monit
+```
+
+Manual Install
+```
+wget http://mmonit.com/monit/dist/monit-5.8.1.tar.gz
+tar zxvf monit-x.y.z.tar.gz (were x.y.z denotes version numbers)
+cd monit-x.y.z
+./configure (use ./configure --help to view available options)
+make && make install
 ```
 
 This README would normally document whatever steps are necessary to get the
