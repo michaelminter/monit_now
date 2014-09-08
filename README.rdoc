@@ -1,5 +1,20 @@
 == README
 
+Installing with yum package manager (Redhat, CentOS, etc)
+```
+yum install monit
+```
+
+Installing with apt-get package manager (Debian, Ubuntu, etc)
+```
+apt-get install monit
+```
+
+Installing with Pacman package manager (Arch Linux)
+```
+pacman -S monit
+```
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
