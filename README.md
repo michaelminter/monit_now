@@ -36,6 +36,16 @@ cd monit-x.y.z
 make && make install
 ```
 
+By default Monit is installed in /usr/local/bin/ and the monit.1 man-file in /usr/local/man/man1/. To change the default location use the --prefix option to ./configure
+
+(Source)[http://mmonit.com/wiki/Monit/Installation]
+
+Installation on Mac OS X with (Homebrew)[http://mxcl.github.com/homebrew/]
+
+```
+brew install monit
+```
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
