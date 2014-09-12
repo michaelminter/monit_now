@@ -13,6 +13,7 @@ gem 'coffee-rails', '~> 4.0.0'
 # gem 'therubyracer',  platforms: :ruby
 
 gem 'devise',      '3.3.0'
+gem 'font-awesome-rails'
 gem 'mongoid',     '~> 4.0.0'
 gem 'nokogiri',    '1.6.3.1'
 gem 'nori',        '2.4.0'

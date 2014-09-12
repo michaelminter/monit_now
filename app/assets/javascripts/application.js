@@ -14,3 +14,14 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require admin/modernizr
+//= require admin/fastclick
+//= require admin/bootstrap.min
+//= require admin/chosen.jquery.min
+//= require admin/bootstrap-slider
+//= require admin/bootstrap-filestyle.min
+//= require admin/animo
+//= require admin/jquery.sparkline.min
+//= require admin/jquery.slimscroll.min
+//= require admin/store+json2.min.js
+//= require admin/app

@@ -1,17 +1,47 @@
 <!DOCTYPE html>
-<html>
+<!--[if lt IE 7]> <html class="ie ie6 lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="ie ie7 lt-ie9 lt-ie8"        lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="ie ie8 lt-ie9"               lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="ie ie9"                      lang="en"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" class="no-ie">
+<!--<![endif]-->
+
 <head>
-  <title>MonitNow</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+<title>Monit Now</title>
+<!--[if lt IE 9]><script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script><script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script><![endif]-->
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+<%= csrf_meta_tags %>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="">
 </head>
+
 <body>
+<!-- START Main wrapper-->
+<div class="wrapper">
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<%= render :partial => 'shared/navigation' %>
 
-<%= yield %>
+<%= render :partial => 'shared/aside' %>
 
+<%= render :partial => 'shared/aside_off' %>
+
+<!-- START Main section-->
+<section>
+  <!-- START Page content-->
+  <%= yield %>
+  <!-- END Page content-->
+  <!-- START Page footer-->
+  <footer>&copy; 2014 - Wintermin</footer>
+  <!-- END Page Footer-->
+</section>
+<!-- END Main section-->
+
+</div>
+<!-- END Main wrapper-->
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </body>
 </html>
