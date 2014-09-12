@@ -2,40 +2,35 @@ class TrafficController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    p request.headers['content-length']
     if request.headers['Content-Type'] == 'text/xml'
-      # Don't know what this does
-      request.body.rewind
+      request.body.rewind # TODO: Find out what this does
 
       ip       = request.ip
       account  = Account.find(params[:id])
-      data     = request.body.read
+      xml      = request.body.read
       parser   = Nori.new(:convert_tags_to => lambda { |tag| tag.snakecase.to_sym })
-      new_data = parser.parse(data)
+      data     = parser.parse(xml)
       content_length = request.headers['content-length'].to_i
 
-      xml_logger.info(data)
-
       if activity_allowed(account, content_length)
+        xml_logger.info(xml)
         begin
-          # save server
+          # Find server
           server = Server.where({ :account_id => account.id, :ip => ip }).first
           if server.nil?
-            server = Server.create(map_server(account, ip, new_data[:monit]))
+            server = Server.create(server_mapping(account, ip, data[:monit]))
           end
-          # save services
-          parse_services(server, new_data[:monit][:services])
-          render :nothing => true, status: 200
+          # Create services
+          create_services(server, data[:monit][:services])
+          render :nothing => true, status: 200 # Okay
         rescue Exception => e
           puts e.message
           puts e.backtrace.join("\n")
-          # Expectation Failed
-          render :nothing => true, status: 417
+          render :nothing => true, status: 417 # Expectation Failed
         end
       end
     else
-      # Upgrade Required
-      render :nothing => true, status: 426
+      render :nothing => true, status: 426 # Upgrade Required
     end
   end
 
@@ -70,7 +65,7 @@ class TrafficController < ApplicationController
     end
   end
 
-  def map_server(account, ip, data={})
+  def server_mapping(account, ip, data={})
     {
       :account_id => account.id,
       :ip => ip,
@@ -93,7 +88,7 @@ class TrafficController < ApplicationController
     }
   end
 
-  def parse_services(server, data)
+  def create_services(server, data)
     if data[:services].class == Array
       data[:services].each do |service|
         service[:service][:server_id] = server.id
@@ -101,7 +96,6 @@ class TrafficController < ApplicationController
       end
     else
       data[:service][:server_id] = server.id
-      p data[:service]
       Service.create(data[:service])
     end
   end

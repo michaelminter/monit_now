@@ -6,11 +6,7 @@ class Service
   field :server_id, type: BSON::ObjectId
   field :type,      type: Integer
 
-  before_create :rename
-
   belongs_to :server
 
-  # def self.name
-  #   self.@name
-  # end
+  validates_presence_of :server_id
 end
