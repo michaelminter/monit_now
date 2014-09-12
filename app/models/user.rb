@@ -41,4 +41,7 @@ class User
 
   has_many :account_users
 
+  def accounts
+    Account.in(id: account_users.map(&:account_id))
+  end
 end

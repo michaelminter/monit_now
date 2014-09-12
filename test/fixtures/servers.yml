@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  uptime: 1
+  poll: 1
+  start_delay: 1
+  localhost_name: MyString
+  control_file: MyString
+  address: MyString
+  port: 1
+  ssl: 1
+  platform_name: MyString
+  release: MyString
+  version: MyString
+  macine: MyString
+  cpu: 1
+  memory: 1
+  swap: 1
+  monit_version: MyString
+
+two:
+  uptime: 1
+  poll: 1
+  start_delay: 1
+  localhost_name: MyString
+  control_file: MyString
+  address: MyString
+  port: 1
+  ssl: 1
+  platform_name: MyString
+  release: MyString
+  version: MyString
+  macine: MyString
+  cpu: 1
+  memory: 1
+  swap: 1
+  monit_version: MyString

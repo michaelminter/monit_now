@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  account_id: 
+  amount_today: 
+  amount_total: 
+  allowance: 
+  recurrence_at: 
+  exceeded_at: 
+
+two:
+  account_id: 
+  amount_today: 
+  amount_total: 
+  allowance: 
+  recurrence_at: 
+  exceeded_at: 

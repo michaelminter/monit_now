@@ -12,9 +12,11 @@ gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
-gem 'devise'
-gem 'mongoid', '~> 4.0.0'
-gem 'simple_form'
+gem 'devise',      '3.3.0'
+gem 'mongoid',     '~> 4.0.0'
+gem 'nokogiri',    '1.6.3.1'
+gem 'nori',        '2.4.0'
+gem 'simple_form', '3.0.2'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -41,5 +43,6 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 group :development do
+  gem 'awesome_print'
   gem 'quiet_assets'
 end
