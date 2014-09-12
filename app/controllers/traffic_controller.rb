@@ -2,16 +2,18 @@ class TrafficController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
+    p request.headers['content-length']
     if request.headers['Content-Type'] == 'text/xml'
-      p request.headers['content-length']
       # Don't know what this does
       request.body.rewind
       data     = request.body.read
       # get activity row for today
-      activity = Activity.where({ :account_id => params[:id], :recurrence_at => Date.now.strftime('%Y%m%d').to_i }).first
-      if activity.blank?
+      activity = Activity.where({ :account_id => params[:id], :recurrence_at => Time.now.strftime('%Y%m%d').to_i }).first
+      p activity
+      if activity.nil? || activity.blank?
         account  = Account.find(params[:id])
-        activity = Activity.create({ account_id: account.id, recurrence_at: Date.now.strftime('%Y%m%d').to_i, amount_today: 0, amount_total: Activity.where(account_id: params[:id]).sum(:amount_today), allowance: account.account_type.data_limit })
+        puts "Account: #{account.inspect}"
+        activity = Activity.create({ account_id: account.id, recurrence_at: Time.now.strftime('%Y%m%d').to_i, amount_today: 0, amount_total: Activity.where(account_id: params[:id]).sum(:amount_today), allowance: account.account_type.data_limit })
       end
       # Check daily amount
       new_amount = activity.amount_today + request.headers['content-length'].to_i
