@@ -11,6 +11,7 @@
 <title>Monit Now</title>
 <!--[if lt IE 9]><script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script><script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script><![endif]-->
 <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+<%= stylesheet_link_tag params[:controller] %>
 <%= csrf_meta_tags %>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
@@ -43,5 +44,6 @@
 </div>
 <!-- END Main wrapper-->
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag params[:controller] %>
 </body>
 </html>
