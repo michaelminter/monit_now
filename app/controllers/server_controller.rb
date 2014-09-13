@@ -1,7 +1,7 @@
 class ServerController < ApplicationController
   def show
-    @servers = Server.all
-    @server = Server.find(params[:id])
-    @services = @server.services.distinct(:@name)
+    @servers  = Server.all
+    @server   = Server.find(params[:id])
+    @services = @server.services
   end
 end
