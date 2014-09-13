@@ -1,4 +1,4 @@
-class ServerController < ApplicationController
+class ServersController < ApplicationController
   def show
     @servers  = Server.all
     @server   = Server.find(params[:id])
