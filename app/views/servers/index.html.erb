@@ -1,0 +1,22 @@
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>IP</th>
+      <th>Uptime</th>
+      <th># CPU</th>
+      <th>Memory</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @servers.each do |server| -%>
+    <tr>
+      <td><%= server.localhost_name -%></td>
+      <td><%= server.ip -%></td>
+      <td><%= server.uptime -%> seconds</td>
+      <td><%= server.cpu -%></td>
+      <td><%= server.memory.to_i > 1000000 ? (server.memory.to_i / 1000000).to_s + ' GB' : server.memory.to_s + ' MB' -%></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

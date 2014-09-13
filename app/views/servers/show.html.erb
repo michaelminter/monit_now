@@ -10,7 +10,7 @@
       <div class="panel panel-<%= panel_color(service.current_event.status) %>">
         <div class="panel-heading"><%= panel_icon(service.type) %> <%= service.name -%></div>
         <div class="panel-body">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue.</p>
+          <p><%= panel_content service.current_event %></p>
         </div>
         <div class="panel-footer">Panel Footer</div>
       </div>
