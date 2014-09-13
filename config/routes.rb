@@ -16,8 +16,8 @@ Rails.application.routes.draw do
 
   post '/collector/:id' => 'traffic#index'
 
-  get 'servers/:id' => 'servers#show', as: :servers
-  get 'servers' => 'servers#index'
+  get 'servers/:id' => 'servers#show', as: :server
+  get 'servers' => 'servers#index', as: :servers
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
