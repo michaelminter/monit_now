@@ -8,9 +8,11 @@
 <li>
   <ul class="nav-labels">
     <li class="nav-heading">Group Label</li>
+    <% @servers.each do |server| %>
     <li class="nav-labels-item">
-      <span class="point point-lg point-success point-outline"></span><a href="#">Label A</a>
+      <span class="point point-lg point-success point-outline"></span><%= link_to server.localhost_name, server_path(server) %>
     </li>
+    <% end %>
     <li class="nav-labels-item">
       <span class="point point-lg point-danger point-outline"></span><a href="#">Label B</a>
     </li>

@@ -1,0 +1,65 @@
+<div class="main-content">
+  <h3><%= @server.localhost_name %>
+    <br>
+    <small><%= @server.ip %></small>
+  </h3>
+  <div class="row">
+    <% @services.each do |service| %>
+    <div class="col-lg-4">
+      <!-- START panel-->
+      <div class="panel panel-success">
+        <div class="panel-heading"><em class="fa fa-hdd-o fa-fw"></em><%= service.inspect -%></div>
+        <div class="panel-body">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue.</p>
+        </div>
+        <div class="panel-footer">Panel Footer</div>
+      </div>
+      <!-- END panel-->
+    </div>
+    <% end %>
+    <div class="col-lg-4">
+      <!-- START panel-->
+      <div class="panel panel-primary">
+        <div class="panel-heading"><em class="fa fa-hdd-o fa-fw"></em>Service</div>
+        <div class="panel-body">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue.</p>
+        </div>
+        <div class="panel-footer">Panel Footer</div>
+      </div>
+      <!-- END panel-->
+    </div>
+    <div class="col-lg-4">
+      <!-- START panel-->
+      <div class="panel panel-success">
+        <div class="panel-heading"><em class="fa fa-hdd-o fa-fw"></em>Service</div>
+        <div class="panel-body">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue.</p>
+        </div>
+        <div class="panel-footer">Panel Footer</div>
+      </div>
+      <!-- END panel-->
+    </div>
+    <div class="col-lg-4">
+      <!-- START panel-->
+      <div class="panel panel-success">
+        <div class="panel-heading"><em class="fa fa-hdd-o fa-fw"></em>Service</div>
+        <div class="panel-body">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue.</p>
+        </div>
+        <div class="panel-footer">Panel Footer</div>
+      </div>
+      <!-- END panel-->
+    </div>
+    <div class="col-lg-4">
+      <!-- START panel-->
+      <div class="panel panel-danger">
+        <div class="panel-heading"><em class="fa fa-hdd-o fa-fw"></em>Service</div>
+        <div class="panel-body">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue.</p>
+        </div>
+        <div class="panel-footer">Panel Footer</div>
+      </div>
+      <!-- END panel-->
+    </div>
+  </div>
+</div>
