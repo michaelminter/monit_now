@@ -1,12 +1,12 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600,700);
 /**
- * 
+ *
  * Wintermin - Bootstrap Admin Theme - Main Stylesheet
- * 
+ *
  * Author: @geedmo
  * Website: http://geedmo.com
  * License: Codecanyon Regular License
- * 
+ *
  */
 /* ========================================================================
 
@@ -68,7 +68,7 @@
   8.8 Vector map
   8.9 portlets / .portlet
 
-9. Utilities 
+9. Utilities
   9.1 utils
 
 10. Print CSS
@@ -3479,7 +3479,7 @@ x:-o-prefocus,
  ========================================================================== */
 /**
  * Custom form elements
- *    - Checkbox 
+ *    - Checkbox
  *    - Radios
  *    - Switch
  *    - Rounded inputs
@@ -3971,7 +3971,7 @@ html.markdownarea-fullscreen,
  ========================================================================== */
 /**
  * Style for the markdown area on new and edit article pages
- * Most of the style overwrite codemirror and 
+ * Most of the style overwrite codemirror and
  * markdownarea uikit addon styles
  */
 /* CODEMIRROR MD THEME */
@@ -5195,4 +5195,32 @@ fieldset[disabled] .fc-button.active {
   .main-content {
     overflow: hidden !important;
   }
+}
+
+table.dataTable thead th {
+  position: relative;
+  background-image: none !important;
+}
+
+table.dataTable thead th.sorting:after,
+table.dataTable thead th.sorting_asc:after,
+table.dataTable thead th.sorting_desc:after {
+  position: absolute;
+  top: 12px;
+  right: 8px;
+  display: block;
+  font-family: FontAwesome;
+}
+
+table.dataTable thead th.sorting:after {
+  content: "\f0dc";
+  color: #ddd;
+  font-size: 0.8em;
+  padding-top: 0.12em;
+}
+table.dataTable thead th.sorting_asc:after {
+  content: "\f0de";
+}
+table.dataTable thead th.sorting_desc:after {
+  content: "\f0dd";
 }
