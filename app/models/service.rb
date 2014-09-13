@@ -13,5 +13,9 @@ class Service
   validates_presence_of :account_id
   validates_presence_of :server_id
   validates_presence_of :name
-  validates_presence_of :type, default: 0
+  validates_presence_of :type
+
+  def current_event
+    self.events.last
+  end
 end

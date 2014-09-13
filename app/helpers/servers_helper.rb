@@ -1,6 +1,6 @@
 module ServersHelper
   def panel_icon(type)
-    case type
+    case type.to_i
       when 3
         return '<em class="fa fa-gear fa-fw"></em>'.html_safe
       when 5
@@ -10,8 +10,8 @@ module ServersHelper
     end
   end
 
-  def panel_color(type)
-    if type.to_i == 0
+  def panel_color(status)
+    if status.to_i == 0
       return 'success'
     else
       return 'danger'
