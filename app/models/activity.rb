@@ -8,4 +8,6 @@ class Activity
   field :amount_total,  type: Integer, default: 0
   field :allowance,     type: Integer
   field :exceeded_at,   type: DateTime
+
+  belongs_to :account
 end

@@ -5,10 +5,10 @@ class ApplicationController < ActionController::Base
 
   layout :layout_by_resource
 
-  before_action :call_servers
+  before_action :current_account
 
   def current_account
-    current_user.accounts.first
+    @current_account ||= current_user.accounts.first
   end
 
   def xml_logger
@@ -21,9 +21,5 @@ class ApplicationController < ActionController::Base
     else
       'application'
     end
-  end
-
-  def call_servers
-    @servers = Server.all
   end
 end
