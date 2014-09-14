@@ -12,12 +12,13 @@ gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
-gem 'devise',      '3.3.0'
+gem 'devise',        '3.3.0'
 gem 'font-awesome-rails'
-gem 'mongoid',     '~> 4.0.0'
-gem 'nokogiri',    '1.6.3.1'
-gem 'nori',        '2.4.0'
-gem 'simple_form', '3.0.2'
+gem 'mongoid',       '~> 4.0.0'
+gem 'nokogiri',      '1.6.3.1'
+gem 'nori',          '2.4.0'
+gem 'rails-timeago', '~> 2.0'
+gem 'simple_form',   '3.0.2'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
