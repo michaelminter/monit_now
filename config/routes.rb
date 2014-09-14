@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get 'servers/:id' => 'servers#show', as: :server
   get 'servers' => 'servers#index', as: :servers
 
+  get 'dashboard' => 'dashboard#index', as: :dashboard
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
