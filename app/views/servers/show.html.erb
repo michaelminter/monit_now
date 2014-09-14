@@ -1,21 +1,20 @@
 <div class="main-content">
   <h3><%= @server.localhost_name %>
     <br>
-    <small><%= @server.ip %></small>
+    <small>IP: <%= @server.ip %> UPTIME: <%= @server.uptime -%> seconds CPU: <%= @server.cpu -%> MEM:<%= @server.memory.to_i > 1000000 ? (@server.memory.to_i / 1000000).to_s + ' GB' : @server.memory.to_s + ' MB' -%></small>
   </h3>
   <div class="row">
+
     <% @services.each do |service| %>
-    <div class="col-lg-4">
-      <!-- START panel-->
-      <div class="panel panel-<%= panel_color(service.current_event.status) %>">
-        <div class="panel-heading"><%= panel_icon(service.type) %> <%= service.name -%></div>
-        <div class="panel-body">
-          <p><%= panel_content service.current_event %></p>
-        </div>
-        <div class="panel-footer">Panel Footer</div>
-      </div>
-      <!-- END panel-->
-    </div>
+      <% case service.type.to_i %>
+        <% when 3 %>
+          <%= render :partial => 'shared/panels/process', locals: { service: service } %>
+        <% when 5 %>
+          <%= render :partial => 'shared/panels/system', locals: { service: service } %>
+        <% else %>
+          <% # err %>
+      <% end %>
     <% end %>
+
   </div>
 </div>

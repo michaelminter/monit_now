@@ -1,0 +1,22 @@
+<div class="col-lg-4">
+  <div data-toggle="play-animation" data-play="fadeInDown" data-offset="0" data-delay="1500" class="panel widget anim-running anim-done" style="">
+    <div class="panel-body bg-<%= panel_color(service.current_event.status) %>">
+      <div class="row row-table row-flush">
+        <div class="col-xs-8">
+          <p class="mb0">SYSTEM</p>
+          <h3 class="m0"><%= service.name -%></h3>
+        </div>
+        <div class="col-xs-4 text-center">
+          <em class="fa fa-hdd-o fa-2x"></em>
+        </div>
+      </div>
+    </div>
+    <div class="panel-body">
+      <!-- Bar chart-->
+      <div class="text-center">
+        <div data-bar-color="<%= panel_color(service.current_event.status) %>" data-height="30" data-bar-width="6" data-bar-spacing="6" class="inlinesparkline inline"><%= service.events.limit(40).map{|e| e[:system][:memory][:percent].to_f.round unless e[:system].nil?}.compact.join(',') -%></div>
+      </div>
+    </div>
+    <div class="panel-footer">See more <i class="fa fa-chevron-down"></i></div>
+  </div>
+</div>
