@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   before_action :current_account
 
   def current_account
-    @current_account ||= current_user.accounts.first
+    @current_account ||= current_user.accounts.first rescue ''
   end
 
   def xml_logger
