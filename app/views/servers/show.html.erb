@@ -7,8 +7,12 @@
 
     <% @services.each do |service| %>
       <% case service.type.to_i %>
+        <% when 2 %>
+          <%= render :partial => 'shared/panels/file', locals: { service: service } %>
         <% when 3 %>
           <%= render :partial => 'shared/panels/process', locals: { service: service } %>
+        <% when 4 %>
+          <%= render :partial => 'shared/panels/host', locals: { service: service } %>
         <% when 5 %>
           <%= render :partial => 'shared/panels/system', locals: { service: service } %>
         <% else %>
