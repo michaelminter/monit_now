@@ -1,7 +1,7 @@
 <div class="main-content">
   <h3><%= @server.localhost_name %>
     <br>
-    <small><i class="fa fa-globe"></i>: <%= @server.ip %> &nbsp;&nbsp;&nbsp; <i class="fa fa-caret-square-o-up" alt="Uptime"></i>: <%= @server.uptime -%> seconds &nbsp;&nbsp;&nbsp; # CPU: <%= @server.cpu -%> &nbsp;&nbsp;&nbsp; MEM: <%= @server.memory.to_i > 1000000 ? (@server.memory.to_i / 1000000).to_s + ' GB' : @server.memory.to_s + ' MB' -%></small>
+    <small><i class="fa fa-globe"></i>: <%= @server.ip %> &nbsp;&nbsp;&nbsp; <i class="fa fa-caret-square-o-up" alt="Uptime"></i>: <%= ChronicDuration.output @server.uptime, :format => :short -%> seconds &nbsp;&nbsp;&nbsp; # CPU: <%= @server.cpu -%> &nbsp;&nbsp;&nbsp; MEM: <%= @server.memory.to_i > 1000000 ? (@server.memory.to_i / 1000000).to_s + ' GB' : @server.memory.to_s + ' MB' -%></small>
   </h3>
   <div class="row">
 
