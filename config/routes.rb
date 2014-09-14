@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   devise_scope :user do
-    get 'sign_in',  to: 'devise/sessions#new'
+    get 'login',  to: 'devise/sessions#new'
     get 'register', to: 'devise/registrations#new'
   end
   # The priority is based upon order of creation: first created -> highest priority.

@@ -11,7 +11,7 @@
 <title>Monit Now</title>
 <link rel="icon" type="image/png" href="/favicon.png">
 <!--[if lt IE 9]><script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script><script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script><![endif]-->
-<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
 <%= stylesheet_link_tag params[:controller] %>
 <%= csrf_meta_tags %>
 <meta charset="utf-8">
@@ -22,28 +22,18 @@
 </head>
 
 <body>
-<!-- START Main wrapper-->
 <div class="wrapper">
 
 <%= render :partial => 'shared/navigation' %>
 
 <%= render :partial => 'shared/aside' %>
 
-<%#= render :partial => 'shared/aside_off' %>
-
-<!-- START Main section-->
 <section>
-  <!-- START Page content-->
   <%= yield %>
-  <!-- END Page content-->
-  <!-- START Page footer-->
   <footer>&copy; 2014 - Monit Now</footer>
-  <!-- END Page Footer-->
 </section>
-<!-- END Main section-->
 
 </div>
-<!-- END Main wrapper-->
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 <%= javascript_include_tag params[:controller] %>
 </body>
