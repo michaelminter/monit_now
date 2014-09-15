@@ -5224,3 +5224,7 @@ table.dataTable thead th.sorting_asc:after {
 table.dataTable thead th.sorting_desc:after {
   content: "\f0dd";
 }
+
+.add-favorite {
+  cursor: pointer;
+}

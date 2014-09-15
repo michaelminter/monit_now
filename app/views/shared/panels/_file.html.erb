@@ -17,6 +17,6 @@
         <div data-bar-color="<%= panel_color(service.current_event.status) %>" data-height="30" data-bar-width="6" data-bar-spacing="6" class="inlinesparkline inline"><%= service.events.order_by(:created_at.desc).limit(34).map{|e| e[:size].to_i unless e[:size].nil?}.compact.join(',') -%></div>
       </div>
     </div>
-    <div class="panel-footer">See more <i class="fa fa-chevron-down"></i></div>
+    <div class="panel-footer"><i class="fa fa-star-o add-favorite"></i><span class="pull-right">See more <i class="fa fa-chevron-down"></i></span></div>
   </div>
 </div>
