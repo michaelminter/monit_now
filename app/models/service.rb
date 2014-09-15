@@ -6,6 +6,7 @@ class Service
   field :server_id,  type: BSON::ObjectId
   field :name,       type: String
   field :type,       type: Integer
+  field :order,      type: Integer
 
   belongs_to :server
   has_many :events
