@@ -39,6 +39,9 @@ class AccountsController < ApplicationController
       if @account.save
         if user.save
           AccountUser.create({ :account_id => @account.id, :user_id => user.id })
+        else
+          format.html { render :new }
+          format.json { render json: user.errors, status: :unprocessable_entity }
         end
 
         format.html { redirect_to @account, notice: 'Account was successfully created.' }
