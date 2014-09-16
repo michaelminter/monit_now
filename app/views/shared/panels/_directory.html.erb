@@ -17,6 +17,22 @@
         <div data-bar-color="<%= panel_color(service.current_event) %>" data-height="30" data-bar-width="6" data-bar-spacing="6" class="inlinesparkline inline"><%= service.events.order_by(:created_at.desc).limit(34).map{|e| e[:status].to_i unless e[:status].nil?}.compact.join(',') -%></div>
       </div>
     </div>
-    <div class="panel-footer"><i class="fa fa-star-o add-favorite"></i><span class="pull-right">See more &nbsp; <i class="fa fa-external-link"></i></span></div>
+    <div class="panel-footer"><i class="fa fa-star-o add-favorite"></i><span class="pull-right"><button data-toggle="modal" data-target="#modal-<%= service.id -%>" style="background:none;border:none;padding:0;">See more &nbsp; <i class="fa fa-external-link"></i></button></span></div>
+  </div>
+</div>
+
+<div id="modal-<%= service.id -%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" data-dismiss="modal" aria-hidden="true" class="close">×</button>
+        <h4 id="myModalLabel" class="modal-title"><%= service.name -%></h4>
+      </div>
+      <div class="modal-body"><%= service.inspect -%></div>
+      <div class="modal-footer">
+        <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+        <!--button type="button" class="btn btn-primary">Save changes</button-->
+      </div>
+    </div>
   </div>
 </div>
