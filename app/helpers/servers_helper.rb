@@ -28,7 +28,7 @@ module ServersHelper
     end
   end
 
-  def label(key, value)
+  def type_label(key, value)
     # service types
     type = {}
     type[0] = 'FILESYSTEM'

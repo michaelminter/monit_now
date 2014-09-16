@@ -17,6 +17,8 @@ class AccountsController < ApplicationController
     @account = Account.new
     # @account.users.build # build a blank user or the child form won't display
     @account_types = AccountType.all
+
+    render layout: 'devise'
   end
 
   # GET /accounts/1/edit

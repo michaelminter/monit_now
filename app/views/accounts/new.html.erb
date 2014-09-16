@@ -4,36 +4,36 @@
   <div class="form-inputs">
 
     <div class="field">
-      <%= f.label :account_type_id, 'Account Type' -%>
-      <%= f.error :account_type_id -%><br />
-      <%= f.collection_radio_buttons :account_type_id, [[1, 'Free'], [2, 'Personal'], [3, 'Premiere'], [4, 'Business']], :first, :last %>
+      <%#= f.label :account_type_id, 'Account Type' -%>
+      <%#= f.error :account_type_id -%><br />
+      <%#= f.collection_radio_buttons :account_type_id, [[1, 'Free'], [2, 'Personal'], [3, 'Premiere'], [4, 'Business']], :first, :last %>
     </div>
 
-    <%= f.simple_fields_for :user do |user_form| %>
-      <%= user_form.error_notification %>
+    <%= f.simple_fields_for :user do |u| %>
+      <%= u.error_notification %>
 
       <div class="field">
-        <%= user_form.label :full_name %>
-        <%= user_form.error :full_name %><br />
-        <%= user_form.input_field :full_name %>
+        <%= u.label :full_name %>
+        <%= u.error :full_name %><br />
+        <%= u.input_field :full_name %>
       </div>
 
       <div class="field">
-        <%= user_form.label :email %>
-        <%= user_form.error :email %><br />
-        <%= user_form.email_field :email %>
+        <%= u.label :email %>
+        <%= u.error :email %><br />
+        <%= u.email_field :email %>
       </div>
 
       <div class="field">
-        <%= user_form.label :password %>
-        <%= user_form.error :password %><br />
-        <%= user_form.password_field :password %>
+        <%= u.label :password %>
+        <%= u.error :password %><br />
+        <%= u.password_field :password %>
       </div>
 
       <div class="field">
-        <%= user_form.label :password_confirmation %>
-        <%= user_form.error :password_confirmation %><br />
-        <%= user_form.password_field :password_confirmation %>
+        <%= u.label :password_confirmation %>
+        <%= u.error :password_confirmation %><br />
+        <%= u.password_field :password_confirmation %>
       </div>
     <% end %>
   </div>

@@ -6,3 +6,6 @@ Rails.application.config.assets.precompile += %w( dashboard.js )
 
 Rails.application.config.assets.precompile += %w( devise.css )
 Rails.application.config.assets.precompile += %w( devise.js )
+
+Rails.application.config.assets.precompile += %w( accounts.css )
+Rails.application.config.assets.precompile += %w( accounts.s )
