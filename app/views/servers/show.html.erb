@@ -7,6 +7,8 @@
 
     <% @services.each do |service| %>
       <% case service.type.to_i %>
+        <% when 0 %>
+          <%= render :partial => 'shared/panels/filesystem', locals: { service: service } %>
         <% when 2 %>
           <%= render :partial => 'shared/panels/file', locals: { service: service } %>
         <% when 3 %>

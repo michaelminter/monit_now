@@ -33,10 +33,10 @@ module ServersHelper
     type = {}
     type[0] = 'FILESYSTEM'
     type[1] = 'DIRECTORY'
-    type[2] = 'FILE'
-    type[3] = 'PROCESS'
-    type[4] = 'HOST'
-    type[5] = 'SYSTEM'
+    type[2] = 'FILE' #
+    type[3] = 'PROCESS' #
+    type[4] = 'HOST' #
+    type[5] = 'SYSTEM' #
     type[6] = 'FIFO'
     type[7] = 'PROGRAM'
 
