@@ -1,6 +1,6 @@
 <div class="col-lg-4">
   <div data-toggle="play-animation" data-play="fadeInDown" data-offset="0" data-delay="1500" class="panel widget anim-running anim-done" style="">
-    <div class="panel-body bg-<%= panel_color(service.current_event.status) %>">
+    <div class="panel-body bg-<%= panel_color(service.current_event) %>">
       <div class="row row-table row-flush">
         <div class="col-xs-8">
           <p class="mb0">PROGRAM</p>
@@ -14,7 +14,7 @@
     <div class="panel-body">
       <!-- Bar chart-->
       <div class="text-center">
-        <div data-bar-color="<%= panel_color(service.current_event.status) %>" data-height="30" data-bar-width="6" data-bar-spacing="6" class="inlinesparkline inline"><%= service.events.order_by(:created_at.desc).limit(34).map{|e| e[:program]['status'].to_i unless e[:program].nil?}.compact.join(',') -%></div>
+        <div data-bar-color="<%= panel_color(service.current_event) %>" data-height="30" data-bar-width="6" data-bar-spacing="6" class="inlinesparkline inline"><%= service.events.order_by(:created_at.desc).limit(34).map{|e| e[:program]['status'].to_i unless e[:program].nil?}.compact.join(',') -%></div>
       </div>
     </div>
     <div class="panel-footer"><i class="fa fa-star-o add-favorite"></i><span class="pull-right">See more &nbsp; <i class="fa fa-external-link"></i></span></div>
