@@ -1,6 +1,6 @@
 /**=========================================================
  * Module: calendar-ui.js
- * This script handle the calendar demo with draggable 
+ * This script handle the calendar demo with draggable
  * events and events creations
  =========================================================*/
 
@@ -18,9 +18,9 @@
    * @param jQuery Object elements Set of element as jQuery objects
    */
   var ExternalEvent = function (elements) {
-      
+
       if (!elements) return;
-      
+
       elements.each(function() {
           var $this = $(this);
           // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
@@ -69,9 +69,9 @@
               day:   'day'
           },
           editable: true,
-          droppable: true, // this allows things to be dropped onto the calendar 
+          droppable: true, // this allows things to be dropped onto the calendar
           drop: function(date, allDay) { // this function is called when something is dropped
-              
+
               var $this = $(this),
                   // retrieve the dropped element's stored Event Object
                   originalEventObject = $this.data('calendarEventObject');
@@ -89,10 +89,10 @@
               clonedEventObject.borderColor = $this.css('border-color');
 
               // render the event on the calendar
-              // the last `true` argument determines if the event "sticks" 
+              // the last `true` argument determines if the event "sticks"
               // (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
               calElement.fullCalendar('renderEvent', clonedEventObject, true);
-              
+
               // if necessary remove the element from the list
               if(removeAfterDrop.is(':checked')) {
                 $this.remove();
@@ -126,17 +126,17 @@
     // Color switchers
     var eventColorSelector = $('.external-event-color-selector .point');
 
-    // Trash events Droparea 
+    // Trash events Droparea
     $('.external-events-trash').droppable({
       accept:       '.fc-event',
       activeClass:  'active',
       hoverClass:   'hovered',
       tolerance:    'touch',
       drop: function(event, ui) {
-        
+
         // You can use this function to send an ajax request
         // to remove the event from the repository
-        
+
         if(draggingEvent) {
           var eid = draggingEvent.id || draggingEvent._id;
           // Remove the event
@@ -162,12 +162,12 @@
 
     eventAddBtn.click(function(e) {
         e.preventDefault();
-        
+
         // Get event name from input
         var val = eventNameInput.val();
         // Dont allow empty values
         if ($.trim(val) === '') return;
-        
+
         // Create new event element
         var newEvent = $('<div/>').css({
                             'background-color': currColor,
@@ -201,7 +201,7 @@
               {
                   title: 'All Day Event',
                   start: new Date(y, m, 1),
-                  backgroundColor: '#f56954', //red 
+                  backgroundColor: '#f56954', //red
                   borderColor: '#f56954' //red
               },
               {
@@ -349,11 +349,11 @@
 
     //
     // Zero configuration
-    // 
+    //
 
     $('#datatable1').dataTable({
         'paging':   true,  // Table pagination
-        'ordering': true,  // Column ordering 
+        'ordering': true,  // Column ordering
         'info':     true,  // Bottom left status text
         // Text translation options
         // Note the required keywords between underscores (e.g _MENU_)
@@ -368,13 +368,13 @@
     });
 
 
-    // 
+    //
     // Filtering by Columns
-    // 
+    //
 
     var dtInstance2 = $('#datatable2').dataTable({
         'paging':   true,  // Table pagination
-        'ordering': true,  // Column ordering 
+        'ordering': true,  // Column ordering
         'info':     true,  // Bottom left status text
         // Text translation options
         // Note the required keywords between underscores (e.g _MENU_)
@@ -397,13 +397,13 @@
       });
 
 
-    // 
+    //
     // Column Visibilty Extension
-    // 
+    //
 
     $('#datatable3').dataTable({
         'paging':   true,  // Table pagination
-        'ordering': true,  // Column ordering 
+        'ordering': true,  // Column ordering
         'info':     true,  // Bottom left status text
         // Text translation options
         // Note the required keywords between underscores (e.g _MENU_)
@@ -441,7 +441,7 @@
 
     var $this = $(this),
         options = $this.data(); // allow to set options via data-* attributes
-    
+
     $this.datetimepicker($.extend(
       options,
       { // support for FontAwesome icons
@@ -467,7 +467,7 @@
  * Animated transition for dropdown open state
  * Animation name placed in [data-play="animationName"]  (http://daneden.github.io/animate.css/)
  * Optionally add [data-duration=seconds]
- * 
+ *
  * Requires animo.js
  =========================================================*/
 
@@ -494,14 +494,14 @@
           target.animo( { animation: animation,  duration: duration} );
 
     });
-  
+
   });
 
 }(jQuery, window, document));
 
 /**=========================================================
  * Module: filter-tag.js
- * Basic items filter 
+ * Basic items filter
  =========================================================*/
 
 (function($, window, document){
@@ -545,7 +545,7 @@
           var res = $this.parents('ul').eq(0).children('li').removeClass('active');
           if(res.length) $this.parent().addClass('active');
         }
-        
+
       });
 
   });
@@ -554,7 +554,7 @@
 
 /**=========================================================
  * Module: flot-chart.js
- * Initializes the flot chart plugin and attaches the 
+ * Initializes the flot chart plugin and attaches the
  * plugin to elements according to its type
  =========================================================*/
 
@@ -562,7 +562,7 @@
   'use strict';
 
   /**
-   * Global object to load data for charts using ajax 
+   * Global object to load data for charts using ajax
    * Request the chart data from the server via post
    * Expects a response in JSON format to init the plugin
    * Usage
@@ -581,7 +581,7 @@
     // Public method
     this.requestData = function (option, method, callback) {
       var self = this;
-      
+
       // support params (option), (option, method, callback) or (option, callback)
       callback = (method && $.isFunction(method)) ? method : callback;
       method = (method && typeof method == 'string') ? method : 'POST';
@@ -594,9 +594,9 @@
           type:     method,
           dataType: 'json'
       }).done(function (data) {
-          
+
           $.plot( self.element, data, option );
-          
+
           if(callback) callback();
 
       });
@@ -609,7 +609,7 @@
     this.listen = function() {
       var self = this,
           chartPanel = this.element.parents('.panel').eq(0);
-      
+
       // attach custom event
       chartPanel.on('panel-refresh', function(event, panel) {
         // request data and remove spinner when done
@@ -626,7 +626,7 @@
 
   //
   // Start of Demo Script
-  // 
+  //
   $(function () {
 
     // Bar chart
@@ -749,7 +749,7 @@
                     },
                     shadowSize: 0
                 };
-            
+
             // Send Request and Listen for refresh events
             chart.requestData(option).listen();
 
@@ -867,7 +867,7 @@
 
     var wizard = $(this),
         validate = wizard.data('validateStep'); // allow to set options via data-* attributes
-    
+
     if(validate) {
       wizard.bwizard({
         clickableSteps: false,
@@ -919,10 +919,10 @@
   var gMapRefs = [];
 
   if($.fn.gMap) {
-    
+
     // Init all gmap visibles in the page
     $(mapSelector).each(function(){
-        
+
         // do not init maps in modal
         if( ! $(this).parents('.modal').length )
           initGmap(this);
@@ -931,15 +931,15 @@
 
     // attach gmap initialization when modal opens
     $('.modal').each(function() {
-      
+
       var $this = $(this),
           mapsInModal = $this.find(mapSelector);
-      
+
       if ( mapsInModal.length ) {
 
         $this.on('shown.bs.modal', function (e) {
           mapsInModal.each(function(){
-        
+
               initGmap(this);
 
           }); //each
@@ -949,7 +949,7 @@
 
     });
   }
-  
+
   // Center Map marker on resolution change
   $(window).resize(function() {
 
@@ -966,7 +966,7 @@
   });
 
   function initGmap(element){
-    
+
     var $this     = $(element),
         addresses = $this.data('address') && $this.data('address').split(';'),
         titles    = $this.data('title') && $this.data('title').split(';'),
@@ -1009,7 +1009,7 @@
 
       // set the styles
       if($this.data('styled') !== undefined) {
-        
+
         ref.setOptions({
           styles: MapStyles
         });
@@ -1085,7 +1085,7 @@
   function saveStylesheet(uri) {
     store.set(storageKeyName, uri);
   }
-  // Restores the stylesheet 
+  // Restores the stylesheet
   function restoreStylesheet() {
     var uri = store.get(storageKeyName);
     if(uri) {
@@ -1526,7 +1526,7 @@
 
 (function($, window, document){
   'use strict';
-  
+
   $(function() {
 
     var openSelector    = '[data-toggle="navbar-search"]',
@@ -1536,11 +1536,11 @@
 
     var NavSearch = {
       toggle: function() {
-        
+
         navbarForm.toggleClass('open');
-        
+
         var isOpen = navbarForm.hasClass('open');
-        
+
         navbarForm.find('input')[isOpen ? 'focus' : 'blur']();
 
       },
@@ -1615,7 +1615,7 @@
 
       if(!message)
         $.error('Notify: No message specified');
-     
+
       $.notify(message, options || {});
   }
 
@@ -1802,13 +1802,13 @@
  =========================================================*/
 (function($, window, document){
   'use strict';
-  
+
   var panelSelector = '[data-perform="panel-dismiss"]',
       removeEvent   = 'panel-remove',
       removedEvent  = 'panel-removed';
 
   $(document).on('click', panelSelector, function () {
-    
+
     // find the first parent panel
     var parent = $(this).closest('.panel');
 
@@ -1862,7 +1862,7 @@
         collapseOpts = {toggle: false},
         iconElement  = $this.children('em'),
         panelId      = parent.attr('id');
-    
+
     // if wrapper not added, add it
     // we need a wrapper to avoid jumping due to the paddings
     if( ! wrapper.length) {
@@ -1897,7 +1897,7 @@
 
   // finally catch clicks to toggle panel collapse
   $(document).on('click', panelSelector, function () {
-    
+
     var parent = $(this).closest('.panel');
     var wrapper = parent.find('.panel-wrapper');
 
@@ -1974,19 +1974,19 @@
 
   /**
    * This function is only to show a demonstration
-   * of how to use the panel refresh system via 
-   * custom event. 
+   * of how to use the panel refresh system via
+   * custom event.
    * IMPORTANT: see how to remove the spinner.
    */
 
   $('.panel.panel-demo').on('panel-refresh', function(e, panel){
-    
+
     // perform any action when a .panel triggers a the refresh event
     setTimeout(function(){
-  
+
       // when the action is done, just remove the spinner class
       panel.removeSpinner();
-  
+
     }, 3000);
 
   });
@@ -1996,21 +1996,21 @@
 /**=========================================================
  * Module: play-animation.js
  * Provides a simple way to run animation with a trigger
- * Targeted elements must have 
+ * Targeted elements must have
  *   [data-toggle="play-animation"]
- *   [data-target="Target element affected by the animation"] 
+ *   [data-target="Target element affected by the animation"]
  *   [data-play="Animation name (http://daneden.github.io/animate.css/)"]
  *
  * Requires animo.js
  =========================================================*/
- 
+
 (function($, window, document){
   'use strict';
 
   var Selector = '[data-toggle="play-animation"]';
 
   $(function() {
-    
+
     var $scroller = $(window).add('body, .wrapper');
 
     // Parse animations params and attach trigger to scroll
@@ -2019,9 +2019,9 @@
           offset    = $this.data('offset'),
           delay     = $this.data('delay')     || 100, // milliseconds
           animation = $this.data('play')      || 'bounce';
-      
+
       if(typeof offset !== 'undefined') {
-        
+
         // test if the element starts visible
         testAnimation($this);
         // test on scroll
@@ -2060,7 +2060,7 @@
       if(target && target) {
         target.animo( { animation: animation } );
       }
-      
+
     });
 
   });
@@ -2109,9 +2109,9 @@
   });
 
   function savePortletOrder(event, ui) {
-    
+
     var data = store.get(storageKeyName);
-    
+
     if(!data) { data = {}; }
 
     data[this.id] = $(this).sortable('toArray');
@@ -2119,23 +2119,23 @@
     if(data) {
       store.set(storageKeyName, data);
     }
-    
+
     // save portlet size to avoid jumps
     saveListSize.apply(this);
   }
 
   function loadPortletOrder() {
-    
+
     var data = store.get(storageKeyName);
 
     if(data) {
-      
+
       var porletId = this.id,
           panels   = data[porletId];
 
       if(panels) {
         var portlet = $('#'+porletId);
-        
+
         $.each(panels, function(index, value) {
            $('#'+value).appendTo(portlet);
         });
@@ -2162,7 +2162,7 @@
 
 /**=========================================================
  * Module: sidebar-menu.js
- * Provides a simple way to implement bootstrap collapse plugin using a target 
+ * Provides a simple way to implement bootstrap collapse plugin using a target
  * next to the current element (sibling)
  * Targeted elements must have [data-toggle="collapse-next"]
  =========================================================*/
@@ -2180,7 +2180,7 @@
     $(document)
       .on('click', collapseSelector, function (e) {
           e.preventDefault();
-          
+
           if ($(window).width() > phone_mq &&
               $body.hasClass(toggledClass)) return;
 
@@ -2231,7 +2231,7 @@
         danger:          '#f6504d'
     };
 
-  // Inline sparklines take their values from the contents of the tag 
+  // Inline sparklines take their values from the contents of the tag
   $(Selector).each(function() {
 
       var $this = $(this);
@@ -2239,6 +2239,12 @@
 
         if(data.barColor && colors[data.barColor])
           data.barColor = colors[data.barColor];
+
+      if (data.stackedBarColor) {
+        data.stackedBarColor = data.stackedBarColor.split(',');
+      }
+
+      console.log(data);
 
       var options = data;
       options.type = data.type || 'bar'; // default chart is bar
@@ -2256,7 +2262,7 @@
 
 (function($, window, document){
   'use strict';
-  
+
   var Selector = 'th.check-all';
 
   $(Selector).on('change', function() {
@@ -2274,7 +2280,7 @@
 
 /**=========================================================
  * Module: toggle-state.js
- * Toggle a classname from the BODY. Useful to change a state that 
+ * Toggle a classname from the BODY. Useful to change a state that
  * affects globally the entire layout or more than one item
  * Targeted elements must have [data-toggle="CLASS-NAME-TO-TOGGLE"]
  * Optionally save and restore state [data-persists="true"]
@@ -2296,7 +2302,7 @@
       e.preventDefault();
       var classname = $(this).data('toggleState'),
           persists  = $(this).data('persists');
-      
+
       if(classname) {
         if( $body.hasClass(classname) ) {
           $body.removeClass(classname);
@@ -2306,7 +2312,7 @@
           $body.addClass(classname);
           if(persists) addState(classname);
         }
-        
+
       }
 
   });
@@ -2314,7 +2320,7 @@
   // Add a state to the browser storage to be restored later
   function addState(classname){
     var data = store.get(storageKeyName);
-    
+
     if(!data)  {
       data = classname;
     }
@@ -2335,11 +2341,11 @@
 
     store.set(storageKeyName, data);
   }
-  
+
   // Load the state string and restore the classlist
   function restoreState($elem) {
     var data = store.get(storageKeyName);
-    
+
     // nothing to restore
     if(!data) return;
     $elem.addClass(data);
@@ -2393,7 +2399,7 @@
 
   });
 
-  // Predicts tooltip top position 
+  // Predicts tooltip top position
   // based on the trigger element
   function predictTooltipTop(el) {
     var top = el.offsetTop;
@@ -2406,7 +2412,7 @@
     return (top - height) - (window.pageYOffset);
   }
 
-  // Predicts tooltip top position 
+  // Predicts tooltip top position
   // based on the trigger element
   function predictTooltipLeft(el) {
     var left = el.offsetLeft;
@@ -2716,13 +2722,13 @@
 
 /**=========================================================
  * Module: utils.js
- * jQuery Utility functions library 
+ * jQuery Utility functions library
  * adapted from the core of UIKit
  =========================================================*/
 
 (function($, window, doc){
     'use strict';
-    
+
     var $html = $("html"), $win = $(window);
 
     $.support.transition = (function() {
@@ -2920,7 +2926,7 @@
       'US': 839,     // USA
       'SA': 410      // Saudi Arabia
     };
-    
+
     var markersData = [
       { latLng:[41.90, 12.45],  name:'Vatican City'          },
       { latLng:[43.73, 7.41],   name:'Monaco'                },
@@ -2940,7 +2946,7 @@
     ];
 
     initVectorMap( $this , options, seriesData, markersData);
-          
+
   });
 
   function  initVectorMap($element, opts, series, markers) {

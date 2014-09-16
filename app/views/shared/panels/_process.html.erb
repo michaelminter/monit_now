@@ -14,7 +14,7 @@
     <div class="panel-body">
       <!-- Bar chart-->
       <div class="text-center">
-        <div data-bar-color="<%= panel_color(service.current_event) %>" data-height="30" data-bar-width="6" data-bar-spacing="6" class="inlinesparkline inline"><%= service.events.order_by(:created_at.desc).limit(34).map{|e| e.memory[:kilobyte].to_f.round unless e[:memory].nil?}.compact.join(',') -%></div>
+        <div data-stacked-bar-color="#6AB550,#4B7F38" data-zero-color="#CCCCCC" data-null-color="#FFFFFF" data-height="30" data-bar-width="6" data-bar-spacing="6" class="inlinesparkline inline"><%= service.events.order_by(:created_at.desc).limit(34).map{|e| "#{e.memory[:kilobyte].to_f.round unless e[:memory].nil?}:#{e.cpu[:percent].to_f.round unless e[:cpu].nil?}" unless e[:memory].nil? && e[:cpu].nil?}.compact.join(',') -%></div>
       </div>
     </div>
     <div class="panel-footer"><i class="fa fa-star-o add-favorite"></i><span class="pull-right">See more &nbsp; <i class="fa fa-external-link"></i></span></div>
