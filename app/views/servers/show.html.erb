@@ -1,7 +1,7 @@
 <div class="main-content">
   <h3><%= @server.localhost_name %>
     <br>
-    <small><i class="fa fa-globe"></i> <%= @server.ip %> &nbsp;&nbsp;&nbsp; <i class="fa fa-caret-square-o-up" alt="Uptime"></i> <%= ChronicDuration.output @server.uptime, :format => :short -%> &nbsp;&nbsp;&nbsp; <strong>CPU</strong> <%= @server.cpu -%> &nbsp;&nbsp;&nbsp; <strong>MEM</strong> <%= @server.memory.to_i > 1000000 ? (@server.memory.to_i / 1000000).to_s + ' GB' : @server.memory.to_s + ' MB' -%> &nbsp;&nbsp;&nbsp; <i class="fa fa-repeat"></i> <%= ChronicDuration.output @server.poll, :format => :short -%></small>
+    <small><i class="fa fa-globe"></i> <%= @server.ip %> &nbsp;&nbsp;&nbsp; <i class="fa fa-caret-square-o-up" alt="Uptime"></i> <%= ChronicDuration.output @server.uptime, :format => :short -%> &nbsp;&nbsp;&nbsp; <strong>CPU</strong> <%= @server.cpu -%> &nbsp;&nbsp;&nbsp; <strong>MEM</strong> <%= @server.memory.to_i > 1000000 ? (@server.memory.to_i / 1000000).to_s + ' GB' : @server.memory.to_s + ' MB' -%> &nbsp;&nbsp;&nbsp; <i class="fa fa-history"></i> <%= ChronicDuration.output @server.poll, :format => :short -%></small>
   </h3>
   <div class="row">
 
@@ -10,6 +10,8 @@
         <% when 0 %>
           <%# https://mmonit.com/monit/documentation/#filesystem_flags_testing %>
           <%= render :partial => 'shared/panels/filesystem', locals: { service: service } %>
+        <% when 1 %>
+          <%= render :partial => 'shared/panels/directory', locals: { service: service } %>
         <% when 2 %>
           <%= render :partial => 'shared/panels/file', locals: { service: service } %>
         <% when 3 %>
@@ -18,6 +20,8 @@
           <%= render :partial => 'shared/panels/host', locals: { service: service } %>
         <% when 5 %>
           <%= render :partial => 'shared/panels/system', locals: { service: service } %>
+        <% when 7 %>
+          <%= render :partial => 'shared/panels/program', locals: { service: service } %>
         <% else %>
           <% # err %>
       <% end %>
