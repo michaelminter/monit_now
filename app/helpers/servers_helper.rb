@@ -11,6 +11,28 @@ module ServersHelper
     end
   end
 
+  def call_service(service)
+    case service.type.to_i
+      when 0
+        # https://mmonit.com/monit/documentation/#filesystem_flags_testing
+        render :partial => 'shared/panels/filesystem', locals: { service: service }
+      when 1
+        render :partial => 'shared/panels/directory', locals: { service: service }
+      when 2
+        render :partial => 'shared/panels/file', locals: { service: service }
+      when 3
+        render :partial => 'shared/panels/process', locals: { service: service }
+      when 4
+        render :partial => 'shared/panels/host', locals: { service: service }
+      when 5
+        render :partial => 'shared/panels/system', locals: { service: service }
+      when 7
+        render :partial => 'shared/panels/program', locals: { service: service }
+      else
+        # err
+  end
+end
+
   def type_label(key, value)
     # service types
     type = {}
