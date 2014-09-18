@@ -13,7 +13,7 @@
     <div class="panel-body">
       <!-- Bar chart-->
       <div class="text-center">
-        <div data-bar-color="<%= panel_color(service.current_event) %>" data-height="30" data-bar-width="6" data-bar-spacing="6" class="inlinesparkline inline"><%= service.events.order_by(:created_at.desc).limit(34).map{|e| e[:port]['responsetime'].to_f unless e[:port].nil?}.compact.join(',') -%></div>
+        <div data-bar-color="<%= bar_color(service.current_event) %>" data-height="30" data-bar-width="6" data-bar-spacing="6" class="inlinesparkline inline"><%= service.events.order_by(:created_at.desc).limit(34).map{|e| e[:port]['responsetime'].to_f unless e[:port].nil?}.compact.join(',') -%></div>
       </div>
     </div>
     <div class="panel-footer"><i class="fa fa-star-o add-favorite"></i><span class="pull-right">See more &nbsp; <i class="fa fa-external-link"></i></span></div>
