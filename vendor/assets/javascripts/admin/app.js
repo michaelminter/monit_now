@@ -2098,8 +2098,9 @@
       helper:               'original',
       revert:               200,
       forceHelperSize:      true,
-      start:                saveListSize
-      //update:               savePortletOrder,
+      start:                saveListSize,
+      // stop:                 savePortletOrder ONLY GETS SELECTED COLUMN
+      update:               savePortletOrder
       //create:               loadPortletOrder
     })
     // optionally disables mouse selection
@@ -2110,18 +2111,19 @@
 
   function savePortletOrder(event, ui) {
 
-    var data = store.get(storageKeyName);
+    //var data = store.get(storageKeyName);
 
-    if(!data) { data = {}; }
-
+    //if(!data) { data = {}; }
+    var data = {};
     data[this.id] = $(this).sortable('toArray');
 
-    if(data) {
-      store.set(storageKeyName, data);
-    }
+    //if(data) {
+    //  store.set(storageKeyName, data);
+    //}
 
     // save portlet size to avoid jumps
-    saveListSize.apply(this);
+    // saveListSize.apply(this);
+    console.log(data);
   }
 
   function loadPortletOrder() {

@@ -5,17 +5,17 @@
   </h3>
   <div class="row">
 
-    <div id="portlet-1" data-toggle="portlet" class="col-lg-4">
+    <div id="column-1" data-toggle="portlet" class="col-lg-4">
     <% @services[:one].each do |service| %>
        <%= call_service(service) -%>
     <% end %>
     </div>
-    <div id="portlet-2" data-toggle="portlet" class="col-lg-4">
+    <div id="column-2" data-toggle="portlet" class="col-lg-4">
     <% @services[:two].each do |service| %>
       <%= call_service(service) -%>
     <% end %>
     </div>
-    <div id="portlet-3" data-toggle="portlet" class="col-lg-4">
+    <div id="column-3" data-toggle="portlet" class="col-lg-4">
     <% @services[:three].each do |service| %>
       <%= call_service(service) -%>
     <% end %>
