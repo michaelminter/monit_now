@@ -12,7 +12,7 @@ module ServersHelper
   end
 
   def bar_color(current_event)
-    current_event.created_at > 30.minutes.ago ? '#5BAB41' : '#6E6E6E'
+    current_event.created_at < 30.minutes.ago ? '#5BAB41' : '#6E6E6E'
   end
 
   def call_service(service)
