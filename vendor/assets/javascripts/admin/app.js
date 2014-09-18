@@ -2098,9 +2098,9 @@
       helper:               'original',
       revert:               200,
       forceHelperSize:      true,
-      start:                saveListSize,
-      update:               savePortletOrder,
-      create:               loadPortletOrder
+      start:                saveListSize
+      //update:               savePortletOrder,
+      //create:               loadPortletOrder
     })
     // optionally disables mouse selection
     //.disableSelection()
