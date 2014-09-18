@@ -1,7 +1,7 @@
 module ServersHelper
   def panel_color(current_event)
     if current_event.created_at < 30.minutes.ago
-      return 'inverse'
+      return 'default'
     else
       if current_event.status.to_i == 0
         return 'success'
