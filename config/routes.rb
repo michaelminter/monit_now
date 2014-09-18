@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   get 'servers' => 'servers#index', as: :servers
 
   get 'dashboard' => 'dashboard#index', as: :dashboard
+
+  post 'services/reorder' => 'services#reorder'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
