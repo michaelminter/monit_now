@@ -2124,17 +2124,15 @@
     // save portlet size to avoid jumps
     // saveListSize.apply(this);
 
-    // TODO: ajax request sends new order to /services/reorder
     var request = $.ajax({
       type: 'POST',
       url:  '/services/reorder',
       data: data
     });
 
-    request.done(function(responce){
-
+    request.fail(function(resp){
+      // TODO: set error notification
     });
-    console.log(data);
   }
 
   function loadPortletOrder() {

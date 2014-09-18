@@ -6,8 +6,8 @@ class Service
   field :server_id,    type: BSON::ObjectId
   field :name,         type: String
   field :type,         type: Integer
-  field :column_order, type: Integer
-  field :row_order,    type: Integer
+  field :order_column, type: Integer, default: rand(1..3)
+  field :order_row,    type: Integer, default: rand(0..99)
 
   belongs_to :server
   has_many :events

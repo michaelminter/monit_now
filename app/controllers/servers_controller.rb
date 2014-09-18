@@ -11,20 +11,15 @@ class ServersController < ApplicationController
     @server   = Server.find(params[:id])
 
     @services = { one: [], two: [], three: [] }
-    count = 1
-    @server.services.each do |service|
-      case count
+    @server.services.order_by(order_column: :asc, order_row: :asc).each do |service|
+      case service.order_column
         when 1
           @services[:one] << service
-          count = count + 1
         when 2
           @services[:two] << service
-          count = count + 1
         when 3
           @services[:three] << service
-          count = 1
       end
     end
-    p @services
   end
 end

@@ -89,7 +89,6 @@ class TrafficController < ApplicationController
   end
 
   def create_services(account, server, data)
-    p data
     if data.class == Array
       data.each do |service|
         find = Service.find_or_create_by(:account_id => account.id, :server_id => server.id, :name => service[:@name], :type => service[:type])
