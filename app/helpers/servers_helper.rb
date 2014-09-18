@@ -1,7 +1,7 @@
 module ServersHelper
   def panel_color(current_event)
     if current_event.created_at < 30.minutes.ago
-      return 'gray'
+      return 'inverse'
     else
       if current_event.status.to_i == 0
         return 'success'
@@ -12,7 +12,7 @@ module ServersHelper
   end
 
   def bar_color(current_event)
-    current_event.created_at < 30.minutes.ago ? '#5BAB41' : '#6E6E6E'
+    current_event.created_at > 30.minutes.ago ? '#5BAB41' : '#6E6E6E'
   end
 
   def call_service(service)
