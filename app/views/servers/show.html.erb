@@ -1,7 +1,7 @@
 <div class="main-content">
   <h3><%= @server.localhost_name %>
     <br>
-    <small><i class="fa fa-globe"></i> <%= @server.ip %> &nbsp;&nbsp;&nbsp; <i class="fa fa-caret-square-o-up" alt="Uptime"></i> <%= ChronicDuration.output @server.uptime, :format => :short -%> &nbsp;&nbsp;&nbsp; <strong>CPU</strong> <%= @server.cpu -%> &nbsp;&nbsp;&nbsp; <strong>MEM</strong> <%= @server.memory.to_i > 1000000 ? (@server.memory.to_i / 1000000).to_s + ' GB' : @server.memory.to_s + ' MB' -%> &nbsp;&nbsp;&nbsp; <i class="fa fa-history"></i> <%= ChronicDuration.output @server.poll, :format => :short -%></small>
+    <small><i class="fa fa-globe"></i> <%= @server.ip %> &nbsp;&nbsp;&nbsp; <i class="fa fa-arrow-up" alt="Uptime"></i> <%= ChronicDuration.output @server.uptime, :format => :short -%> &nbsp;&nbsp;&nbsp; <%= image_tag 'admin/icons/cpu-16.png', :style => 'height:14px;margin-bottom:3px;' -%> <%= @server.cpu -%> &nbsp;&nbsp;&nbsp; <%= image_tag 'admin/icons/ram-16.png', :style => 'height:14px;margin-bottom:3px;' -%> <%= @server.memory.to_i > 1000000 ? (@server.memory.to_i / 1000000).to_s + ' GB' : @server.memory.to_s + ' MB' -%> &nbsp;&nbsp;&nbsp; <i class="fa fa-history"></i> <%= ChronicDuration.output @server.poll, :format => :short -%></small>
   </h3>
   <div class="row">
 
