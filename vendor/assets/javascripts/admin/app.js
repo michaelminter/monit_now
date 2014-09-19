@@ -2126,7 +2126,7 @@
 
     var request = $.ajax({
       type: 'POST',
-      url:  '/services/reorder',
+      url:  '/portlets/reorder',
       data: data
     });
 

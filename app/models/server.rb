@@ -22,5 +22,5 @@ class Server
   field :monit_version,  type: String
 
   belongs_to :account
-  has_many   :services
+  has_many   :portlets
 end

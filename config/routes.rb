@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 
   get 'dashboard' => 'dashboard#index', as: :dashboard
 
-  post 'services/reorder' => 'services#reorder'
+  post 'portlets/reorder' => 'portlets#reorder'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

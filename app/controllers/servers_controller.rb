@@ -10,15 +10,15 @@ class ServersController < ApplicationController
     @servers  = Server.all
     @server   = Server.find(params[:id])
 
-    @services = { one: [], two: [], three: [] }
-    @server.services.order_by(order_column: :asc, order_row: :asc).each do |service|
-      case service.order_column
+    @portlets = { one: [], two: [], three: [] }
+    @server.portlets.order_by(order_column: :asc, order_row: :asc).each do |portlet|
+      case portlet.order_column
         when 1
-          @services[:one] << service
+          @portlets[:one] << portlet
         when 2
-          @services[:two] << service
+          @portlets[:two] << portlet
         when 3
-          @services[:three] << service
+          @portlets[:three] << portlet
       end
     end
   end

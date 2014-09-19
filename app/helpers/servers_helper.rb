@@ -1,9 +1,9 @@
 module ServersHelper
-  def panel_color(current_event)
-    if current_event.created_at < 30.minutes.ago
+  def panel_color(current_service)
+    if current_service.created_at < 30.minutes.ago
       return 'default'
     else
-      if current_event.status.to_i == 0
+      if current_service.status.to_i == 0
         return 'success'
       else
         return 'danger'
@@ -11,27 +11,28 @@ module ServersHelper
     end
   end
 
-  def bar_color(current_event)
-    current_event.created_at > 30.minutes.ago ? '#5BAB41' : '#6E6E6E'
+  def bar_color(current_service)
+    current_service.created_at > 30.minutes.ago ? '#5BAB41' : '#6E6E6E'
   end
 
-  def call_service(service)
-    case service.type.to_i
+  def call_service(portlet)
+    return '' if portlet.services.count == 0
+    case portlet.type.to_i
       when 0
         # https://mmonit.com/monit/documentation/#filesystem_flags_testing
-        render :partial => 'shared/panels/filesystem', locals: { service: service }
+        render :partial => 'shared/panels/filesystem', locals: { portlet: portlet }
       when 1
-        render :partial => 'shared/panels/directory', locals: { service: service }
+        render :partial => 'shared/panels/directory', locals: { portlet: portlet }
       when 2
-        render :partial => 'shared/panels/file', locals: { service: service }
+        render :partial => 'shared/panels/file', locals: { portlet: portlet }
       when 3
-        render :partial => 'shared/panels/process', locals: { service: service }
+        render :partial => 'shared/panels/process', locals: { portlet: portlet }
       when 4
-        render :partial => 'shared/panels/host', locals: { service: service }
+        render :partial => 'shared/panels/host', locals: { portlet: portlet }
       when 5
-        render :partial => 'shared/panels/system', locals: { service: service }
+        render :partial => 'shared/panels/system', locals: { portlet: portlet }
       when 7
-        render :partial => 'shared/panels/program', locals: { service: service }
+        render :partial => 'shared/panels/program', locals: { portlet: portlet }
       else
         # err
   end

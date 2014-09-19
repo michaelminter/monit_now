@@ -21,7 +21,7 @@ class TrafficController < ApplicationController
             server = Server.create(server_mapping(account, ip, data[:monit]))
           end
           # Create services
-          create_services(account, server, data[:monit][:services][:service])
+          create_portlets_and_services(account, server, data[:monit][:services][:service])
           render :nothing => true, status: 200 # Okay
         rescue Exception => e
           puts e.message
@@ -88,21 +88,21 @@ class TrafficController < ApplicationController
     }
   end
 
-  def create_services(account, server, data)
+  def create_portlets_and_services(account, server, data)
     if data.class == Array
       data.each do |service|
-        find = Service.find_or_create_by(:account_id => account.id, :server_id => server.id, :name => service[:@name], :type => service[:type])
+        find = Portlet.find_or_create_by(:account_id => account.id, :server_id => server.id, :name => service[:@name], :type => service[:type])
         service[:account_id] = account.id
         service[:server_id]  = server.id
-        service[:service_id] = find.id
-        Event.create(service)
+        service[:portlet_id] = find.id
+        Service.create(service)
       end
     else
-      find = Service.find_or_create_by(:account_id => account.id, :server_id => server.id, :name => data[:@name], :type => data[:type])
+      find = Portlet.find_or_create_by(:account_id => account.id, :server_id => server.id, :name => data[:@name], :type => data[:type])
       data[:account_id] = account.id
       data[:server_id]  = server.id
-      data[:service_id] = find.id
-      Event.create(data)
+      data[:portlet_id] = find.id
+      Service.create(data)
     end
   end
 end
