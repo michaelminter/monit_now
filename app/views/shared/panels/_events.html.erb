@@ -1,0 +1,40 @@
+<div id="<%= portlet.id -%>" class="panel panel-default" data-id="<%= portlet.id -%>">
+  <div class="panel-heading portlet-handler">
+    <div class="row row-table row-flush">
+      <div class="col-xs-8">
+        <p class="mb0">SERVER</p>
+        <h3 class="m0"><%= portlet.name -%></h3>
+      </div>
+      <div class="col-xs-4 text-center">
+        <em class="fa fa-bolt fa-2x"></em>
+      </div>
+    </div>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Service</th>
+          <!--<th>Type</th>-->
+          <!--<th>State</th>-->
+          <!--<th>Action</th>-->
+          <th>Message</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @server.events.order_by(:created_at.desc).limit(15).each do |event| %>
+        <tr>
+          <td><strong><%= event.service -%></strong></td>
+          <!--<td><%= type_label 'type', event.type -%></td>-->
+          <!--<td><%= type_label 'state', event.state -%></td>-->
+          <!--<td><%= type_label 'action', event.action -%></td>-->
+          <td><%= event.message -%></td>
+          <td><%= event.created_at.strftime('%m-%d %H:%M:%S') -%></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="panel-footer"><i class="fa fa-star-o add-favorite"></i><span class="pull-right">See more &nbsp; <i class="fa fa-external-link"></i></span></div>
+</div>

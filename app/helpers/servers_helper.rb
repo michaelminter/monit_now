@@ -16,7 +16,6 @@ module ServersHelper
   end
 
   def call_service(portlet)
-    return '' if portlet.services.count == 0
     case portlet.type.to_i
       when 0
         # https://mmonit.com/monit/documentation/#filesystem_flags_testing
@@ -28,11 +27,13 @@ module ServersHelper
       when 3
         render :partial => 'shared/panels/process', locals: { portlet: portlet }
       when 4
-        render :partial => 'shared/panels/host', locals: { portlet: portlet }
+        render :partial => 'shared/panels/host', locals: { portlet: portlet } unless portlet.services.count == 0
       when 5
-        render :partial => 'shared/panels/system', locals: { portlet: portlet }
+        render :partial => 'shared/panels/system', locals: { portlet: portlet } unless portlet.services.count == 0
       when 7
-        render :partial => 'shared/panels/program', locals: { portlet: portlet }
+        render :partial => 'shared/panels/program', locals: { portlet: portlet } unless portlet.services.count == 0
+      when 100
+        render :partial => 'shared/panels/events', locals: { portlet: portlet }
       else
         # err
   end
@@ -84,6 +85,12 @@ end
         return type[value.to_i] rescue ''
       when 'monitor'
         return monitor[value.to_i] rescue ''
+      when 'every'
+        return every[value.to_i] rescue ''
+      when 'state'
+        return state[value.to_i] rescue ''
+      when 'action'
+        return action[value.to_i] rescue ''
       else
         return value
     end
