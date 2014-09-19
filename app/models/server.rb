@@ -24,4 +24,15 @@ class Server
   belongs_to :account
   has_many   :portlets
   has_many   :events
+
+  after_create :create_events_portlet
+
+  def create_events_portlet
+    Portlet.create({
+        :account_id => self.account_id,
+        :server_id  => self.id,
+        :name       => 'Events',
+        :type       => 100
+                   })
+  end
 end
