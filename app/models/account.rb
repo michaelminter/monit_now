@@ -9,6 +9,7 @@ class Account
   has_many   :account_users
   has_many   :servers
   has_many   :activities
+  has_many   :events
 
   validates_presence_of :account_type_id
 

@@ -22,6 +22,10 @@ class TrafficController < ApplicationController
           end
           # Create services
           create_portlets_and_services(account, server, data[:monit][:services][:service])
+          # Create event(s)
+          if data[:monit][:event].present?
+            create_events(account, server, data[:monit][:event])
+          end
           render :nothing => true, status: 200 # Okay
         rescue Exception => e
           puts e.message
@@ -103,6 +107,24 @@ class TrafficController < ApplicationController
       data[:server_id]  = server.id
       data[:portlet_id] = find.id
       Service.create(data)
+    end
+  end
+
+  def create_events(account, server, events)
+    if events.class == Array
+      events.each do |event|
+        event[:account_id] = account.id
+        event[:server_id]  = server.id
+        event[:monit_id]   = event[:id]
+        event.delete :id
+        Event.create(event)
+      end
+    else
+      events[:account_id] = account.id
+      events[:server_id]  = server.id
+      events[:monit_id]   = events[:id]
+      events.delete :id
+      Event.create(events)
     end
   end
 end

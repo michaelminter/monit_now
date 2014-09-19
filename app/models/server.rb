@@ -23,4 +23,5 @@ class Server
 
   belongs_to :account
   has_many   :portlets
+  has_many   :events
 end
