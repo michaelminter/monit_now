@@ -1,9 +1,10 @@
+<% @events = @server.events %>
 <div id="<%= portlet.id -%>" class="panel panel-default" data-id="<%= portlet.id -%>">
   <div class="panel-heading portlet-handler">
     <div class="row row-table row-flush">
       <div class="col-xs-8">
         <p class="mb0">SERVER</p>
-        <h3 class="m0"><%= portlet.name -%></h3>
+        <h3 class="m0"><%= "#{@events.count} #{portlet.name}" -%></h3>
       </div>
       <div class="col-xs-4 text-center">
         <em class="fa fa-bolt fa-2x"></em>
@@ -23,7 +24,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @server.events.order_by(:created_at.desc).limit(15).each do |event| %>
+        <% @events.order_by(:created_at.desc).limit(15).each do |event| %>
         <tr>
           <td><strong><%= event.service -%></strong></td>
           <!--<td><%= type_label 'type', event.type -%></td>-->
