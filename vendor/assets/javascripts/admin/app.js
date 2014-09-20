@@ -2255,7 +2255,15 @@
         data.stackedBarColor = data.stackedBarColor.split(',');
       }
 
-      console.log(data);
+      if (data.tooltipValueLookups) {
+        var array = data.tooltipValueLookups.split(','), hash = {};
+        for (var i = 0, len = array.length; i < len; i++) {
+          hash[i] = array[i];
+        }
+        console.log(hash);
+        data.tooltipValueLookups = { 'offset' : hash }
+
+      }
 
       var options = data;
       options.type = data.type || 'bar'; // default chart is bar

@@ -1,8 +1,24 @@
 <div class="main-content">
-  <h3><%= @server.localhost_name %>
-    <br>
-    <small><i class="fa fa-globe"></i> <%= @server.ip %> &nbsp;&nbsp;&nbsp; <i class="fa fa-arrow-up" alt="Uptime"></i> <%= ChronicDuration.output @server.uptime, :format => :short -%> &nbsp;&nbsp;&nbsp; <%= image_tag 'admin/icons/cpu-16.png', :style => 'height:14px;margin-bottom:3px;' -%> <%= @server.cpu -%> &nbsp;&nbsp;&nbsp; <%= image_tag 'admin/icons/ram-16.png', :style => 'height:14px;margin-bottom:3px;' -%> <%= @server.memory.to_i > 1000000 ? (@server.memory.to_i / 1000000).to_s + ' GB' : @server.memory.to_s + ' MB' -%> &nbsp;&nbsp;&nbsp; <i class="fa fa-history"></i> <%= ChronicDuration.output @server.poll, :format => :short -%></small>
-  </h3>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 style="border:none;margin-bottom:30px;"><%= @server.localhost_name %></h3>
+    </div>
+    <div class="col-md-6 text-right">
+      <div style="margin-top:20px;letter-spacing:1px;">
+        <i class="fa fa-globe"></i> <%= @server.ip %><span style="display:inline-block;width:15px;"></span>
+        <i class="fa fa-arrow-up" alt="Uptime"></i> <%= ChronicDuration.output @server.uptime, :format => :short -%><span style="display:inline-block;width:15px;"></span>
+        <%= image_tag 'admin/icons/cpu-16.png', :style => 'height:14px;margin-bottom:3px;' -%> <%= @server.cpu -%> cores<span style="display:inline-block;width:15px;"></span>
+        <%= image_tag 'admin/icons/ram-16.png', :style => 'height:14px;margin-bottom:3px;' -%> <%= @server.memory.to_i > 1000000 ? (@server.memory.to_i / 1000000).to_s + ' GB' : @server.memory.to_s + ' MB' -%><span style="display:inline-block;width:15px;"></span>
+        <i class="fa fa-history"></i> <%= ChronicDuration.output @server.poll, :format => :short -%>
+      </div>
+    </div>
+  </div>
+
+  <ul class="nav nav-tabs" role="tablist" style="margin-bottom:20px;">
+    <li class="active"><a href="#">Main</a></li>
+    <li><a href="#">Events</a></li>
+  </ul>
+
   <div class="row">
 
     <div id="column-1" data-toggle="portlet" class="col-lg-4">
