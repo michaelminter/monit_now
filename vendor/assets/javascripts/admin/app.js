@@ -2268,6 +2268,17 @@
         data.barWidth = width;
       }
 
+      if (data.tooltipFields) {
+        data.tooltipFormatter = function(sp, options, fields) {
+          var labels   = data.tooltipFields.split(',');
+          var response = '';
+          for (i = 0; i < labels.length; i++) {
+            response += '<div class="jqsfield"><span style="color: '+fields[i].color+'">&#9679;</span> '+labels[i]+' '+fields[i].value+'</div>'
+          }
+          return response;
+        }
+      }
+
       var options = data;
       options.type = data.type || 'bar'; // default chart is bar
 
