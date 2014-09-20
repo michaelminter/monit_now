@@ -13,7 +13,9 @@
   <div class="panel-body">
     <!-- Bar chart-->
     <div class="text-center" style="position:relative;overflow:hidden;">
-      <div data-chart-range-min="0" data-stacked-bar-color="#6AB550,#4B7F38" data-zero-color="#CCCCCC" data-null-color="#FFFFFF" data-height="30" data-bar-width="6" data-bar-spacing="6" data-bar-spread="true" class="inlinesparkline inline"><%= portlet.services.order_by(:created_at.desc).limit(30).map{|e| "#{e[:memory].nil? ? 0 : e.memory[:kilobyte].to_f.round}:#{e[:memory].nil? ? 0 : e.cpu[:percent].to_f.round}"}.compact.join(',') -%></div>
+      <div data-tooltip-chart-title="Memory" data-tooltip-suffix="%" data-chart-range-min="0" data-bar-color="<%= bar_color(portlet.current_service) %>" data-zero-color="#CCCCCC" data-null-color="#FFFFFF" data-height="30" data-bar-width="6" data-bar-spacing="6" data-bar-spread="true" class="inlinesparkline inline"><%= portlet.services.order_by(:created_at.desc).limit(30).map{|e| "#{e[:memory].nil? ? 0 : e.memory[:percent].to_f.round(1)}" }.compact.join(',') -%></div>
+      <div style="height:20px;"></div>
+      <div data-tooltip-chart-title="CPU" data-tooltip-suffix="%" data-chart-range-min="0" data-bar-color="<%= bar_color(portlet.current_service) %>" data-zero-color="#CCCCCC" data-null-color="#FFFFFF" data-height="30" data-bar-width="6" data-bar-spacing="6" data-bar-spread="true" class="inlinesparkline inline"><%= portlet.services.order_by(:created_at.desc).limit(30).map{|e| "#{e[:cpu].nil? ? 0 : e.cpu[:percent].to_f.round(1)}" }.compact.join(',') -%></div>
     </div>
   </div>
   <div class="panel-footer"><i class="fa fa-star-o add-favorite"></i><span class="pull-right">See more &nbsp; <i class="fa fa-external-link"></i></span></div>
