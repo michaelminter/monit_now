@@ -2270,7 +2270,6 @@
 
       if (data.tooltipFields) {
         data.tooltipFormatter = function(sp, options, fields) {
-          console.log(fields);
           var labels   = data.tooltipFields.split(',');
           var response = '';
           if (data.tooltipChartTitle) {
