@@ -29,10 +29,12 @@ class Server
 
   def create_events_portlet
     Portlet.create({
-        :account_id => self.account_id,
-        :server_id  => self.id,
-        :name       => 'Events',
-        :type       => 100
+        :account_id   => self.account_id,
+        :server_id    => self.id,
+        :name         => 'Events',
+        :type         => 100,
+        :order_column => 3,
+        :order_row    => 0
                    })
   end
 end
