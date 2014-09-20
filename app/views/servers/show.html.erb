@@ -16,7 +16,7 @@
 
   <ul class="nav nav-tabs" role="tablist" style="margin-bottom:20px;">
     <li class="active"><a href="#">Main</a></li>
-    <li><a href="#">Events</a></li>
+    <li><%= link_to 'Events', events_path(:server_id => @server.id) -%></li>
   </ul>
 
   <div class="row">

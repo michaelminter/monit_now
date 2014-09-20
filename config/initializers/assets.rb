@@ -9,3 +9,6 @@ Rails.application.config.assets.precompile += %w( devise.js )
 
 Rails.application.config.assets.precompile += %w( accounts.css )
 Rails.application.config.assets.precompile += %w( accounts.s )
+
+Rails.application.config.assets.precompile += %w( events.css )
+Rails.application.config.assets.precompile += %w( events.js )

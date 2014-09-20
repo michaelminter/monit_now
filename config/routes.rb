@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'events/index'
+
   resources :account_types
 
   resources :accounts
@@ -18,6 +20,7 @@ Rails.application.routes.draw do
 
   get 'servers/:id' => 'servers#show', as: :server
   get 'servers' => 'servers#index', as: :servers
+  get 'servers/:server_id/events' => 'events#index', as: :events
 
   get 'dashboard' => 'dashboard#index', as: :dashboard
 
