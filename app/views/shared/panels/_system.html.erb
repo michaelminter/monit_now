@@ -12,7 +12,7 @@
   </div>
   <div class="panel-body">
     <!-- Bar chart-->
-    <div class="text-center">
+    <div class="text-center" style="position:relative;overflow:hidden;">
       <div data-bar-color="<%= bar_color(portlet.current_service) %>" data-tooltip-chart-title="Load Average" data-zero-color="#CCCCCC" data-null-color="#FFFFFF" data-height="30" data-bar-width="6" data-bar-spacing="6" class="inlinesparkline inline"><%= portlet.services.order_by(:created_at.desc).limit(34).map{|e| "#{e[:system][:load][:avg01].to_f.round(2)}" unless e[:system].nil?}.compact.join(',') -%></div>
       <div style="height:20px;"></div>
       <div data-tooltip-chart-title="CPU" data-bar-color="<%= bar_color(portlet.current_service) %>" data-stacked-bar-color="#6AB550,#4B7F38" data-zero-color="#CCCCCC" data-null-color="#FFFFFF" data-height="30" data-bar-width="6" data-bar-spacing="6" class="inlinesparkline inline"><%= portlet.services.order_by(:created_at.desc).limit(34).map{|e| "#{e[:system][:cpu][:user].to_f.round(2)}:#{e[:system][:cpu][:system].to_f.round(2)}" unless e[:system].nil?}.compact.join(',') -%></div>
