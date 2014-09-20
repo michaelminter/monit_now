@@ -2270,10 +2270,22 @@
 
       if (data.tooltipFields) {
         data.tooltipFormatter = function(sp, options, fields) {
+          console.log(fields);
           var labels   = data.tooltipFields.split(',');
           var response = '';
+          if (data.tooltipChartTitle) {
+            response += '<div>'+data.tooltipChartTitle+'</div>';
+          }
           for (i = 0; i < labels.length; i++) {
-            response += '<div class="jqsfield"><span style="color: '+fields[i].color+'">&#9679;</span> '+labels[i]+' '+fields[i].value+'</div>'
+            response += '<div class="jqsfield"><span style="color: '+fields[i].color+'">&#9679;</span> '+labels[i]+': ';
+            if (data.tooltipPrefix) {
+              response += data.tooltipPrefix+' ';
+            }
+            response += fields[i].value;
+            if (data.tooltipSuffix) {
+              response += data.tooltipSuffix+' ';
+            }
+            response += '</div>'
           }
           return response;
         }
