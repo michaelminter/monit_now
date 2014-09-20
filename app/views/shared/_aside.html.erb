@@ -1,32 +1,32 @@
 <!-- START aside-->
 <aside class="aside">
-<!-- START Sidebar (left)-->
-<nav class="sidebar">
-<ul class="nav">
-<!-- START Menu-->
-<li class="nav-heading">Servers</li>
-<li>
-  <ul class="nav-labels">
-    <li class="nav-heading">Group Label</li>
-    <% @servers.each do |server| %>
-    <li class="nav-labels-item">
-      <span class="point point-lg point-success point-outline"></span><%= link_to server.localhost_name, servers_path(server) %>
-    </li>
-    <% end %>
-    <li class="nav-labels-item">
-      <span class="point point-lg point-danger point-outline"></span><a href="#">Label B</a>
-    </li>
-    <li class="nav-labels-item">
-      <span class="point point-lg point-info point-outline"></span><a href="#">Label C</a>
-    </li>
-    <li class="nav-labels-item">
-      <span class="point point-lg point-warning point-outline"></span><a href="#">Label D</a>
-    </li>
-  </ul>
-</li>
-<!-- END Menu-->
-</ul>
-</nav>
-<!-- END Sidebar (left)-->
+  <!-- START Sidebar (left)-->
+  <nav class="sidebar">
+    <div style="background:#f9f6f3;border-bottom:1px solid #CCCCCC;padding:10px;">
+    <div class="p" style="background:#FFFFFF;border:1px solid #EEEEEE;">
+      <p>Data usage</p>
+      <p><strong><%= total_data_usage(@current_account.activities.last.amount_total) %></strong> of <%= @current_account.account_type.data_limit / 1000000 %> MB</p>
+      <div class="progress progress-striped progress-xs m0">
+        <% activity_percentage = ((@current_account.activities.last.amount_total.to_f / @current_account.account_type.data_limit.to_f) * 100.to_f).round -%>
+        <div role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-info" style="width:<%= activity_percentage -%>%;">
+          <span class="sr-only"><%= activity_percentage -%>% Complete</span>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <ul class="nav">
+      <!-- START Menu-->
+      <li class="nav-heading">Main</li>
+      <li>
+        <a href="/servers" title="Dashboard">
+          <em class="fa fa-bar-chart"></em>
+          <span class="item-text">Servers</span>
+        </a>
+      </li>
+      <!-- END Menu-->
+    </ul>
+  </nav>
+  <!-- END Sidebar (left)-->
 </aside>
 <!-- End aside-->
