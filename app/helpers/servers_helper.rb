@@ -36,8 +36,8 @@ module ServersHelper
         render :partial => 'shared/panels/events', locals: { portlet: portlet }
       else
         # err
+    end
   end
-end
 
   def type_label(key, value)
     # service types
