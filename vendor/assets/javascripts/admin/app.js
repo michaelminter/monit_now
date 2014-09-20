@@ -2263,6 +2263,11 @@
         data.tooltipValueLookups = { 'offset' : hash }
       }
 
+      if (data.barSpread) {
+        var width = ($this.parent().width() - 174) / 30;
+        data.barWidth = width;
+      }
+
       var options = data;
       options.type = data.type || 'bar'; // default chart is bar
 
