@@ -1,3 +1,24 @@
-<% @events.each do |event| %>
-  <%= event.message -%>
-<% end %>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Service</th>
+    <th>Type</th>
+    <th>State</th>
+    <th>Action</th>
+    <th>Message</th>
+    <th>Date</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @events.each do |event| %>
+    <tr>
+      <td><strong><%= event.service -%></strong></td>
+      <td><%= type_label 'type', event.type -%></td>
+      <td><%= type_label 'state', event.state -%></td>
+      <td><%= type_label 'action', event.action -%></td>
+      <td><%= event.message -%></td>
+      <td><%= event.created_at.strftime('%m-%d %H:%M:%S') -%></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
