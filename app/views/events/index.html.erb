@@ -1,24 +1,62 @@
-<table class="table table-striped">
-  <thead>
-  <tr>
-    <th>Service</th>
-    <th>Type</th>
-    <th>State</th>
-    <th>Action</th>
-    <th>Message</th>
-    <th>Date</th>
-  </tr>
-  </thead>
-  <tbody>
-  <% @events.each do |event| %>
-    <tr>
-      <td><strong><%= event.service -%></strong></td>
-      <td><%= type_label 'type', event.type -%></td>
-      <td><%= type_label 'state', event.state -%></td>
-      <td><%= type_label 'action', event.action -%></td>
-      <td><%= event.message -%></td>
-      <td><%= event.created_at.strftime('%m-%d %H:%M:%S') -%></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-6">
+      <h3 style="border:none;" class="normalize-page-header"><%= @server.localhost_name %></h3>
+    </div>
+    <div class="col-md-6 text-right">
+      <div style="margin-top:5px;letter-spacing:1px;">
+        <i class="fa fa-globe"></i> <%= @server.ip %><span style="display:inline-block;width:15px;"></span>
+        <i class="fa fa-arrow-up" alt="Uptime"></i> <%= ChronicDuration.output @server.uptime, :format => :short -%><span style="display:inline-block;width:15px;"></span>
+        <%= image_tag 'admin/icons/cpu-16.png', :style => 'height:14px;margin-bottom:3px;' -%> <%= @server.cpu -%> cores<span style="display:inline-block;width:15px;"></span>
+        <%= image_tag 'admin/icons/ram-16.png', :style => 'height:14px;margin-bottom:3px;' -%> <%= @server.memory.to_i > 1000000 ? (@server.memory.to_i / 1000000).to_s + ' GB' : @server.memory.to_s + ' MB' -%><span style="display:inline-block;width:15px;"></span>
+        <i class="fa fa-history"></i> <%= ChronicDuration.output @server.poll, :format => :short -%>
+      </div>
+    </div>
+  </div>
+
+  <ul class="nav nav-tabs" role="tablist" style="margin-bottom:20px;">
+    <li><%= link_to 'Main', server_path(@server) -%></li>
+    <li class="active"><%= link_to "Events (#{@server.events.count})", events_path(:server_id => @server.id) -%></li>
+  </ul>
+
+  <div class="row">
+    <div class="col-lg-12">
+
+      <table id="datatable2" class="table table-striped table-hover">
+        <thead>
+        <tr>
+          <th>Service</th>
+          <th>Type</th>
+          <th>State</th>
+          <th>Action</th>
+          <th>Message</th>
+          <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @events.each do |event| %>
+          <tr>
+            <td><strong><%= event.service -%></strong></td>
+            <td><%= type_label 'type', event.type -%></td>
+            <td><%= type_label 'state', event.state -%></td>
+            <td><%= type_label 'action', event.action -%></td>
+            <td><%= event.message -%></td>
+            <td><%= event.created_at.strftime('%m-%d %H:%M:%S') -%></td>
+          </tr>
+        <% end %>
+        </tbody>
+        <tfoot>
+            <th><input type="text" name="filter_service" placeholder="Filter Service" class="form-control input-sm datatable_input_col_search"></th>
+            <th><input type="text" name="filter_type" placeholder="Filter Type" class="form-control input-sm datatable_input_col_search"></th>
+            <th><input type="text" name="filter_state" placeholder="Filter State" class="form-control input-sm datatable_input_col_search"></th>
+            <th><input type="text" name="filter_action" placeholder="Filter Action" class="form-control input-sm datatable_input_col_search"></th>
+            <th><input type="text" name="filter_message" placeholder="Filter Message" class="form-control input-sm datatable_input_col_search"></th>
+            <th><input type="text" name="filter_date" placeholder="Filter Date" class="form-control input-sm datatable_input_col_search"></th>
+          </tr>
+        </tfoot>
+      </table>
+
+    </div>
+  </div>
+</div>
+
