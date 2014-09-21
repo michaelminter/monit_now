@@ -41,7 +41,7 @@ header {
   background-image: url('/assets/admin/landing/background.jpg');
   background-repeat: no-repeat;
   background-color: #fff;
-  background-attachment: fixed;
+  /*background-attachment: fixed;*/
 }
 header > .container {
   min-height: 100%;
