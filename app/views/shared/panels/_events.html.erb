@@ -37,5 +37,5 @@
       </tbody>
     </table>
   </div>
-  <div class="panel-footer"><i class="fa fa-star-o add-favorite"></i><span class="pull-right">See more &nbsp; <i class="fa fa-external-link"></i></span></div>
+  <div class="panel-footer"><i class="fa fa-star-o add-favorite"></i><span class="pull-right"><%= link_to 'See more &nbsp; <i class="fa fa-chevron-right"></i>'.html_safe, events_path(server_id: @server.id), style: 'color:#656565;' -%></span></div>
 </div>
