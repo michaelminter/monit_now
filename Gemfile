@@ -20,6 +20,7 @@ gem 'nokogiri',      '1.6.3.1'
 gem 'nori',          '2.4.0'
 gem 'rails-timeago', '~> 2.0'
 gem 'simple_form',   '3.0.2'
+gem 'stripe',        '1.15.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
