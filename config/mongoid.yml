@@ -72,7 +72,9 @@ production:
     default:
       database: monitnow_staging
       hosts:
-        - admin:3c1e07925ba6d97fb57eb3ae0c21e69f@kahana.mongohq.com:10032
+        - kahana.mongohq.com:10032
+      username: monitnow
+      password: o2%hmMSa]DvAz1
       options:
         read: primary
         # In the test environment we lower the retries and retry interval to
