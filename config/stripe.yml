@@ -9,5 +9,8 @@ test:
   <<: *defaults
 
 production:
+  <<: *defaults
+
+live:
   :secret_key: sk_live_qhJckczMD3PJOAeJTmj5HOe6
   :publishable_key: pk_live_r0e0rzQMT1xl6LKPkC6AH7om
