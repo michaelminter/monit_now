@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   get 'dashboard' => 'dashboard#index', as: :dashboard
 
   post 'portlets/reorder' => 'portlets#reorder'
+
+  get 'confirm_email' => 'accounts#confirm', as: :confirm_email
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

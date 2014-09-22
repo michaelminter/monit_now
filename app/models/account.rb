@@ -3,6 +3,7 @@ class Account
   include Mongoid::Timestamps
 
   field :account_type_id, type: BSON::ObjectId
+  field :stripe_id,       type: String
   field :name,            type: String
 
   belongs_to :account_type

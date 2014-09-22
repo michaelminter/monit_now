@@ -15,3 +15,6 @@ Rails.application.config.assets.precompile += %w( events.js )
 
 Rails.application.config.assets.precompile += %w( landing_page.css )
 Rails.application.config.assets.precompile += %w( landing_page.js )
+
+Rails.application.config.assets.precompile += %w( account_types.css )
+Rails.application.config.assets.precompile += %w( account_types.js )
