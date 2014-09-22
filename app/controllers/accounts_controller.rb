@@ -53,15 +53,17 @@ class AccountsController < ApplicationController
         :card => token,
         :description => user.email
     )
+    p customer
     @account.stripe_id = customer.id
 
     # Create the charge on Stripe's servers - this will charge the user's card
     begin
       charge = Stripe::Charge.create(
-          :amount => (@account_type.price.round(2) * 100).round, # amount in cents, again
+          :amount => (@account_type.price * 100).round, # amount in cents, again
           :currency => 'usd',
           :customer => customer.id
       )
+      p charge
     rescue Stripe::CardError => e
       # The card has been declined
       puts '*** Something bad happened ***'
