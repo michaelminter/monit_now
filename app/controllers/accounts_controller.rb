@@ -45,32 +45,51 @@ class AccountsController < ApplicationController
 
     # Get the credit card details submitted by the form
     token    = params[:stripeToken]
-    customer = create_stripe_customer(token, email)
+    customer = create_stripe_customer(token, user.email)
 
     @account.stripe_customer_id = customer.id
 
     begin
       # Create the charge on Stripe's servers - this will charge the user's card
-      create_stripe_charge((@account_type.price * 100).round, customer.id)
-    rescue Stripe::CardError => e
+      subscription = customer.subscriptions.create(:plan => @account_type.stripe_subscription_plan)
+      @account.recurrence_at = Time.at(subscription.start.to_i).utc.strftime('%d')
+
+    rescue Exception => e
       # The card has been declined
+      flash[:notice] = e.message
+      render :new
+      return
     end
 
     respond_to do |format|
-      if @account.save
-        if user.save
-          AccountUser.create({ :account_id => @account.id, :user_id => user.id })
-        else
-          format.html { render :new }
-          format.json { render json: user.errors, status: :unprocessable_entity }
-        end
+      begin
+        @account.save
+        user.save
+        AccountUser.create({ :account_id => @account.id, :user_id => user.id })
+
         format.html { redirect_to confirm_email_path, notice: 'Account was successfully created.' }
         format.json { render :show, status: :created, location: @account }
-      else
+      rescue Exception => e
+        flash[:notice] = e.message
         format.html { render :new }
-        format.json { render json: @account.errors, status: :unprocessable_entity }
+        format.json { render json: e.message, status: :unprocessable_entity }
       end
     end
+    # respond_to do |format|
+    #   if @account.save
+    #     if user.save
+    #       AccountUser.create({ :account_id => @account.id, :user_id => user.id })
+    #     else
+    #       format.html { render :new }
+    #       format.json { render json: user.errors, status: :unprocessable_entity }
+    #     end
+    #     format.html { redirect_to confirm_email_path, notice: 'Account was successfully created.' }
+    #     format.json { render :show, status: :created, location: @account }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @account.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /accounts/1

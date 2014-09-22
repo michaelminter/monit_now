@@ -11,14 +11,11 @@
 </p>
 
 <p>
-  <strong>Data retention:</strong>
-  <%= @account_type.data_retention %>
-</p>
-
-<p>
   <strong>Price:</strong>
   <%= @account_type.price %>
 </p>
+
+<p><strong>stripe_subscription_plan</strong><%= @account_type.stripe_subscription_plan -%></p>
 
 <%= link_to 'Edit', edit_account_type_path(@account_type) %> |
 <%= link_to 'Back', account_types_path %>
