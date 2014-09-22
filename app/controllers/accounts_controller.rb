@@ -30,6 +30,9 @@ class AccountsController < ApplicationController
   # POST /accounts
   # POST /accounts.json
   def create
+    # set up Stripe session
+    Stripe.api_key = YAML.load_file("#{Rails.root}/config/stripe.yml")[Rails.env][:secret_key]
+
     @account_type = AccountType.find params[:account_type_id]
     @account      = Account.new({ :account_type_id => @account_type.id, name: account_params[:name] })
 
@@ -40,53 +43,34 @@ class AccountsController < ApplicationController
       return
     end
 
-    config = YAML.load_file("#{Rails.root}/config/stripe.yml")[Rails.env]
-    # Set your secret key: remember to change this to your live secret key in production
-    # See your keys here https://dashboard.stripe.com/account
-    Stripe.api_key = config[:secret_key]
-
     # Get the credit card details submitted by the form
-    token = params[:stripeToken]
+    token    = params[:stripeToken]
+    customer = create_stripe_customer(token, email)
 
-    # Create a Customer
-    customer = Stripe::Customer.create(
-        :card => token,
-        :description => user.email
-    )
-    p customer
-    @account.stripe_id = customer.id
+    @account.stripe_customer_id = customer.id
 
-    # Create the charge on Stripe's servers - this will charge the user's card
     begin
-      charge = Stripe::Charge.create(
-          :amount => (@account_type.price * 100).round, # amount in cents, again
-          :currency => 'usd',
-          :customer => customer.id
-      )
-      p charge
+      # Create the charge on Stripe's servers - this will charge the user's card
+      create_stripe_charge((@account_type.price * 100).round, customer.id)
     rescue Stripe::CardError => e
       # The card has been declined
-      puts '*** Something bad happened ***'
     end
 
-    #respond_to do |format|
+    respond_to do |format|
       if @account.save
         if user.save
           AccountUser.create({ :account_id => @account.id, :user_id => user.id })
         else
-          #format.html { render :new }
-          render :new
-          #format.json { render json: user.errors, status: :unprocessable_entity }
+          format.html { render :new }
+          format.json { render json: user.errors, status: :unprocessable_entity }
         end
-        redirect_to confirm_email_path
-        #format.html { redirect_to @account, notice: 'Account was successfully created.' }
-        #format.json { render :show, status: :created, location: @account }
+        format.html { redirect_to confirm_email_path, notice: 'Account was successfully created.' }
+        format.json { render :show, status: :created, location: @account }
       else
-        #format.html { render :new }
-        render :new
-        #format.json { render json: @account.errors, status: :unprocessable_entity }
+        format.html { render :new }
+        format.json { render json: @account.errors, status: :unprocessable_entity }
       end
-    #end
+    end
   end
 
   # PATCH/PUT /accounts/1
@@ -131,5 +115,17 @@ class AccountsController < ApplicationController
 
   def user_params
     params.require(:account).permit(:user => [ :full_name, :email, :password, :password_confirmation ])[:user]
+  end
+
+  def create_stripe_customer(token, email)
+    Stripe::Customer.create({ :card => token, :description => email })
+  end
+
+  def create_stripe_charge(price, customer_id)
+    Stripe::Charge.create({
+        :amount => price,
+        :currency => 'usd',
+        :customer => customer_id
+    })
   end
 end
