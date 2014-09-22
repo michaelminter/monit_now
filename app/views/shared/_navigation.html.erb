@@ -228,18 +228,6 @@
     </a>
     <!-- START Dropdown menu-->
     <ul class="dropdown-menu">
-      <li>
-        <div class="p">
-          <p>Data usage</p>
-          <p><strong><%= total_data_usage(@current_account.activities.last.amount_total) %></strong> of <%= @current_account.account_type.data_limit / 1000000 %> MB</p>
-          <div class="progress progress-striped progress-xs m0">
-            <% activity_percentage = ((@current_account.activities.last.amount_total.to_f / @current_account.account_type.data_limit.to_f) * 100.to_f).round -%>
-            <div role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-info" style="width:<%= activity_percentage -%>%;">
-              <span class="sr-only"><%= activity_percentage -%>% Complete</span>
-            </div>
-          </div>
-        </div>
-      </li>
       <li class="divider"></li>
       <li><a href="#">Profile</a>
       </li>
