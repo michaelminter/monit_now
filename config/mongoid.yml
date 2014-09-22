@@ -67,3 +67,15 @@ test:
         # low amounts for fast failures.
         max_retries: 1
         retry_interval: 0
+production:
+  sessions:
+    default:
+      database: monitnow_staging
+      hosts:
+        - admin:3c1e07925ba6d97fb57eb3ae0c21e69f@kahana.mongohq.com:10032
+      options:
+        read: primary
+        # In the test environment we lower the retries and retry interval to
+        # low amounts for fast failures.
+        max_retries: 1
+        retry_interval: 0
