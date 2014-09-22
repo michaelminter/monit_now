@@ -5,9 +5,10 @@
     <div style="background:#F0F5F6;border-bottom:1px solid #FFFFFF;padding:10px;">
     <div class="p" style="background:#FFFFFF;border:1px solid #EEEEEE;">
       <p>Data usage</p>
-      <p><strong><%= number_to_human @current_account.activities.last.amount_total, precision: 5, units: { unit: 'B', thousand: 'KB', million: 'MB', trillion: 'GB' } -%></strong> of <%= @current_account.account_type.data_limit >= 1000000000 ? "#{@current_account.account_type.data_limit / 1000000000} GB" : "#{@current_account.account_type.data_limit / 1000000} MB" %></p>
+      <% amount_total = @current_account.activities.count > 0 ? @current_account.activities.last.amount_total : 0 %>
+      <p><strong><%= number_to_human amount_total, precision: 5, units: { unit: 'B', thousand: 'KB', million: 'MB', trillion: 'GB' } -%></strong> of <%= @current_account.account_type.data_limit >= 1000000000 ? "#{@current_account.account_type.data_limit / 1000000000} GB" : "#{@current_account.account_type.data_limit / 1000000} MB" %></p>
       <div class="progress progress-striped progress-xs m0">
-        <% activity_percentage = ((@current_account.activities.last.amount_total.to_f / @current_account.account_type.data_limit.to_f) * 100).round(2) -%>
+        <% activity_percentage = @current_account.activities.count > 0 ? ((amount_total.to_f / @current_account.account_type.data_limit.to_f) * 100).round(2) : 0 -%>
         <div role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-info" style="width:<%= activity_percentage -%>%;">
           <span class="sr-only"><%= activity_percentage -%>% Complete</span>
         </div>
