@@ -64,6 +64,15 @@ Rails.application.configure do
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
+  sendgrid = YAML.load_file(Rails.root.join('config/sendgrid.yml'))[:production]
+  config.action_mailer.smtp_settings = {
+      :address        => sendgrid[:address],
+      :port           => sendgrid[:port],
+      :domain         => sendgrid[:domain],
+      :authentication => sendgrid[:authentication],
+      :user_name      => sendgrid[:username],
+      :password       => sendgrid[:password]
+  }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).

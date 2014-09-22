@@ -1,0 +1,7 @@
+:production
+  :address: smtp.sendgrid.net
+  :port: 25
+  :domain: monitnow.com
+  :authentication: plain
+  :user_name: Monitnow
+  :password: qkESv>54Wl(qQB
