@@ -23,11 +23,11 @@ class TrafficController < ApplicationController
             server = Server.create(server_mapping(account, ip, data[:monit]))
           end
           # Create services
-
-          create_portlets_and_services(account, server, data[:monit][:services].nil? ? data[:monit][:service] : data[:monit][:services][:service])
-          # Create event(s)
+          if data[:monit][:service].present? || data[:monit][:services].present?
+            create_portlets_and_services(account, server, data[:monit][:services].nil? ? data[:monit][:service] : data[:monit][:services][:service])
+          end
+          # Create events
           if data[:monit][:event].present?
-            logger.info '----- this works!'
             create_events(account, server, data[:monit][:event])
           end
           render :nothing => true, status: 200 # Okay
