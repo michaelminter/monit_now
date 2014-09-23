@@ -109,7 +109,7 @@ class TrafficController < ApplicationController
     if data.class == Array
       data.each do |service|
         service = service_mapping(service)
-        find = Portlet.find_or_create_by(:account_id => account.id, :server_id => server.id, :name => service[:name].nil? ? service[:@name] : service[:name], :type => service[:type].nil? ? service[:@type] : service[:type])
+        find = Portlet.find_or_create_by(:account_id => account.id, :server_id => server.id, :name => service[:name].nil? ? service[:name] : service[:name], :type => service[:type].nil? ? service[:type] : service[:type])
         service[:account_id] = account.id
         service[:server_id]  = server.id
         service[:portlet_id] = find.id
@@ -117,7 +117,7 @@ class TrafficController < ApplicationController
       end
     else
       data = service_mapping(data)
-      find = Portlet.find_or_create_by(:account_id => account.id, :server_id => server.id, :name => service[:name].nil? ? service[:@name] : service[:name], :type => service[:type].nil? ? service[:@type] : service[:type])
+      find = Portlet.find_or_create_by(:account_id => account.id, :server_id => server.id, :name => data[:name].nil? ? data[:name] : data[:name], :type => data[:type].nil? ? data[:type] : data[:type])
       data[:account_id] = account.id
       data[:server_id]  = server.id
       data[:portlet_id] = find.id
