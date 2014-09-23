@@ -96,14 +96,14 @@ class TrafficController < ApplicationController
   end
 
   def service_mapping(data)
+    response = {}
     unless data.nil?
-      response = {}
       data.each do |key,value|
         response[key.to_s.gsub('@','').to_sym] = value
       end
       return response
     end
-    return true
+    return response
   end
 
   def create_portlets_and_services(account, server, data)
