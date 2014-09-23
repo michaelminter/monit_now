@@ -14,6 +14,7 @@ class TrafficController < ApplicationController
 
       if activity_allowed(account, content_length)
         xml_logger.info(xml)
+        logger.info xml
         begin
           # Find server
           server = Server.where({ :account_id => account.id, :ip => ip }).first
@@ -28,7 +29,6 @@ class TrafficController < ApplicationController
           end
           render :nothing => true, status: 200 # Okay
         rescue Exception => e
-          logger.info data[:monit].inspect
           Rollbar.report_exception(e)
           render :nothing => true, status: 417 # Expectation Failed
         end
