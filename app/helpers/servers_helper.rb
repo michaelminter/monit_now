@@ -16,7 +16,6 @@ module ServersHelper
   end
 
   def call_service(portlet)
-    return if portlet.services.count == 0
     case portlet.type.to_i
       when 0
         # https://mmonit.com/monit/documentation/#filesystem_flags_testing

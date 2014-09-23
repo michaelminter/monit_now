@@ -13,7 +13,9 @@
   <div class="panel-body">
     <!-- Bar chart-->
     <div class="text-center" style="position:relative;overflow:hidden;">
+      <% unless portlet.services.count == 0 %>
       <div data-bar-color="<%= bar_color(service.current_service) %>" data-chart-range-min="0" data-height="30" data-bar-width="6" data-bar-spacing="6" data-bar-spread="true" class="inlinesparkline inline"><%= portlet.services.order_by(:created_at.desc).limit(30).map{|e| e[:program]['status'].to_i unless e[:program].nil?}.compact.join(',') -%></div>
+      <% end %>
     </div>
   </div>
   <div class="panel-footer"><i class="fa fa-star-o add-favorite"></i><span class="pull-right">See more &nbsp; <i class="fa fa-external-link"></i></span></div>

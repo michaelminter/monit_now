@@ -12,8 +12,10 @@
   </div>
   <div class="panel-body">
     <div class="text-center" style="position:relative;overflow:hidden;">
+      <% unless portlet.services.count == 0 %>
       <div style="background:#FFFFFF;font-size:30px;font-weight:bold;color:<%= bar_color(portlet.current_service) %>;line-height:30px;padding-left:5px;position:absolute;top:0;right:0;text-align:left;"><%= number_to_human_size portlet.services.last.size.to_i -%></div>
       <div data-chart-range-min="0" data-bar-color="<%= bar_color(portlet.current_service) %>" data-height="30" data-bar-width="6" data-bar-spacing="6" class="inlinesparkline inline" data-bar-spread="true"><%= portlet.services.order_by(:created_at.desc).limit(30).map{|e| e[:size].to_i unless e[:size].nil?}.compact.join(',') -%></div>
+      <% end %>
     </div>
   </div>
   <div class="panel-footer"><i class="fa fa-star-o add-favorite"></i><span class="pull-right">See more &nbsp; <i class="fa fa-external-link"></i></span></div>
