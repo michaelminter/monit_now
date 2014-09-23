@@ -28,6 +28,7 @@ class TrafficController < ApplicationController
           end
           render :nothing => true, status: 200 # Okay
         rescue Exception => e
+          logger.info data[:monit].inspect
           Rollbar.report_exception(e)
           render :nothing => true, status: 417 # Expectation Failed
         end
