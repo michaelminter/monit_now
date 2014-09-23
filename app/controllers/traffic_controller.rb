@@ -28,8 +28,7 @@ class TrafficController < ApplicationController
           end
           render :nothing => true, status: 200 # Okay
         rescue Exception => e
-          puts e.message
-          puts e.backtrace.join("\n")
+          Rollbar.report_exception(e)
           render :nothing => true, status: 417 # Expectation Failed
         end
       end
