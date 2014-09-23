@@ -23,7 +23,8 @@ class TrafficController < ApplicationController
             server = Server.create(server_mapping(account, ip, data[:monit]))
           end
           # Create services
-          create_portlets_and_services(account, server, data[:monit][:services][:service])
+
+          create_portlets_and_services(account, server, data[:monit][:services].nil? ? data[:monit][:service] : data[:monit][:services][:service])
           # Create event(s)
           if data[:monit][:event].present?
             create_events(account, server, data[:monit][:event])
