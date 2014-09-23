@@ -94,9 +94,18 @@ class TrafficController < ApplicationController
     }
   end
 
+  def service_mapping(data)
+    response = {}
+    data.each do |key,value|
+      response[key.to_s.gsub('@','').to_sym] = value
+    end
+    return response
+  end
+
   def create_portlets_and_services(account, server, data)
     if data.class == Array
       data.each do |service|
+        service = service_mapping(service)
         find = Portlet.find_or_create_by(:account_id => account.id, :server_id => server.id, :name => service[:name].nil? ? service[:@name] : service[:name], :type => service[:type].nil? ? service[:@type] : service[:type])
         service[:account_id] = account.id
         service[:server_id]  = server.id
@@ -104,6 +113,7 @@ class TrafficController < ApplicationController
         Service.create(service)
       end
     else
+      data = service_mapping(data)
       find = Portlet.find_or_create_by(:account_id => account.id, :server_id => server.id, :name => service[:name].nil? ? service[:@name] : service[:name], :type => service[:type].nil? ? service[:@type] : service[:type])
       data[:account_id] = account.id
       data[:server_id]  = server.id
