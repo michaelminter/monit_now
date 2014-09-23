@@ -16,8 +16,6 @@ class Account
 
   validates_presence_of :account_type_id
 
-  after_validation :report_validation_errors_to_rollbar
-
   before_create :add_recurrence
 
   def add_recurrence

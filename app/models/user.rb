@@ -41,8 +41,6 @@ class User
 
   has_many :account_users
 
-  after_validation :report_validation_errors_to_rollbar
-
   def accounts
     Account.in(id: account_users.map(&:account_id))
   end
