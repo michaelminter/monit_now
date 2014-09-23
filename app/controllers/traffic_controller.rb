@@ -97,14 +97,14 @@ class TrafficController < ApplicationController
   def create_portlets_and_services(account, server, data)
     if data.class == Array
       data.each do |service|
-        find = Portlet.find_or_create_by(:account_id => account.id, :server_id => server.id, :name => service[:@name], :type => service[:type])
+        find = Portlet.find_or_create_by(:account_id => account.id, :server_id => server.id, :name => service[:name].nil? ? service[:@name] : service[:name], :type => service[:type].nil? ? service[:@type] : service[:type])
         service[:account_id] = account.id
         service[:server_id]  = server.id
         service[:portlet_id] = find.id
         Service.create(service)
       end
     else
-      find = Portlet.find_or_create_by(:account_id => account.id, :server_id => server.id, :name => data[:@name], :type => data[:type])
+      find = Portlet.find_or_create_by(:account_id => account.id, :server_id => server.id, :name => service[:name].nil? ? service[:@name] : service[:name], :type => service[:type].nil? ? service[:@type] : service[:type])
       data[:account_id] = account.id
       data[:server_id]  = server.id
       data[:portlet_id] = find.id
