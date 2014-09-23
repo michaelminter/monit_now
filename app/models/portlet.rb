@@ -17,6 +17,8 @@ class Portlet
   validates_presence_of :name
   validates_presence_of :type
 
+  after_validation :report_validation_errors_to_rollbar
+
   def current_service
     self.services.last
   end

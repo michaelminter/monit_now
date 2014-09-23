@@ -10,4 +10,6 @@ class Service
 
   validates_presence_of :account_id
   validates_presence_of :portlet_id
+
+  after_validation :report_validation_errors_to_rollbar
 end
