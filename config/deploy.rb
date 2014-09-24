@@ -12,10 +12,10 @@ require 'mina/git'
 
 set :domain, '54.164.203.156'
 set :user, 'ec2-user'
-set :port, '22 -A'
 set :deploy_to, '/var/www/monitnow'
-set :repository, 'http://github.com:michaelminter/monit_now.git'
+set :repository, 'git@github.com:michaelminter/monit_now.git'
 set :branch, 'production'
+set :forward_agent, true
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked in the 'deploy:link_shared_paths' step.
