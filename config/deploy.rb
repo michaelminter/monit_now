@@ -10,7 +10,7 @@ require 'mina/rvm'    # for rvm support. (http://rvm.io)
 #   repository   - Git repo to clone from. (needed by mina/git)
 #   branch       - Branch name to deploy. (needed by mina/git)
 
-set :domain, '54.164.203.156'
+set :domain, '54.164.119.214'
 set :user, 'ec2-user'
 set :deploy_to, '/var/www/monitnow'
 set :repository, 'git@github.com:michaelminter/monit_now.git'
