@@ -19,7 +19,7 @@ set :forward_agent, true
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked in the 'deploy:link_shared_paths' step.
-set :shared_paths, ['config/database.yml', 'log']
+set :shared_paths, ['config/mongoid.yml', 'log']
 
 # Optional settings:
 #   set :user, 'foobar'    # Username in the server to SSH to.
