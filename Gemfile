@@ -25,6 +25,9 @@ gem 'sendgrid',      '1.2.0'
 gem 'simple_form',   '3.0.2'
 gem 'stripe',        '1.15.0'
 
+#dunno why
+gem 'therubyracer'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
