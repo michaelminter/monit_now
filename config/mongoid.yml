@@ -70,11 +70,11 @@ test:
 production:
   sessions:
     default:
-      database: monitnow_staging
+      database: monit_now_production
       hosts:
-        - kahana.mongohq.com:10032
-      username: monitnow
-      password: o2%hmMSa]DvAz1
+        - localhost:27017
+      username:
+      password:
       options:
         read: primary
         # In the test environment we lower the retries and retry interval to
