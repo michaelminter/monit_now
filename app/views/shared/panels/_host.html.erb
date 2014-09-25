@@ -1,14 +1,9 @@
 <div id="<%= portlet.id -%>" class="panel panel-<%= panel_color(portlet.current_service) %>" data-id="<%= portlet.id -%>">
   <div class="panel-heading portlet-handler">
-    <div class="row row-table row-flush">
-      <div class="col-xs-8">
-        <p class="mb0">HOST</p>
-        <h3 class="m0"><%= portlet.name -%></h3>
-      </div>
-      <div class="col-xs-4 text-center">
-        <em class="fa fa-globe fa-2x"></em>
-      </div>
-    </div>
+    <em class="fa fa-globe"></em> <%= portlet.name -%>
+    <a href="javascript:void(0);" data-perform="panel-collapse" data-toggle="tooltip" title="" class="pull-right" data-original-title="Collapse Panel">
+      <em class="fa fa-minus"></em>
+    </a>
   </div>
   <div class="panel-body">
     <!-- Bar chart-->
