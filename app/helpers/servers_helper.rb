@@ -1,5 +1,6 @@
 module ServersHelper
   def panel_color(current_service)
+    return 'default' if current_service.nil?
     if current_service.created_at < 30.minutes.ago
       return 'default'
     else
