@@ -17,7 +17,6 @@ gem 'devise',        '3.3.0'
 gem 'font-awesome-rails'
 gem 'mina'
 gem 'mongoid',       '~> 4.0.0'
-gem 'newrelic_rpm'
 gem 'nokogiri',      '1.6.3.1'
 gem 'nori',          '2.4.0'
 gem 'rails-timeago', '~> 2.0'
@@ -64,4 +63,5 @@ group :production do
   # Include 'rails_12factor' gem to enable all platform features
   # See https://devcenter.heroku.com/articles/rails-integration-gems for more information.
   # gem 'rails_12factor'
+  gem 'newrelic_rpm'
 end
