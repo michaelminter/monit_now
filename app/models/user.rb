@@ -41,6 +41,9 @@ class User
 
   has_many :account_users
 
+  validates_uniqueness_of :email
+  validates_presence_of   :full_name
+
   def accounts
     Account.in(id: account_users.map(&:account_id))
   end
