@@ -6,5 +6,25 @@
     <br>
     <small>Welcome to your dashboard</small>
   </h3>
-  <%= render :partial => 'dashboard/installation_instructions' -%>
+  <% if @current_account.dashboard_portlets.count == 0 %>
+    <%= render :partial => 'dashboard/installation_instructions' -%>
+  <% else %>
+  <div class="row">
+    <div id="column-1" data-toggle="portlet" class="col-lg-4">
+      <% @portlets[:one].each do |portlet| %>
+        <%= call_service(portlet, 'dashboard') -%>
+      <% end %>
+    </div>
+    <div id="column-2" data-toggle="portlet" class="col-lg-4">
+      <% @portlets[:two].each do |portlet| %>
+        <%= call_service(portlet, 'dashboard') -%>
+      <% end %>
+    </div>
+    <div id="column-3" data-toggle="portlet" class="col-lg-4">
+      <% @portlets[:three].each do |portlet| %>
+        <%= call_service(portlet, 'dashboard') -%>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
 </div>

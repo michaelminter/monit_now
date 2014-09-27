@@ -11,6 +11,7 @@ class Portlet
 
   belongs_to :server
   has_many :services
+  has_many :dashboard_portlets
 
   validates_presence_of :account_id
   validates_presence_of :server_id

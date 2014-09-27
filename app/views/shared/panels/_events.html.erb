@@ -19,9 +19,6 @@
       <thead>
         <tr>
           <th>Service</th>
-          <!--<th>Type</th>-->
-          <!--<th>State</th>-->
-          <!--<th>Action</th>-->
           <th>Message</th>
           <th>Date</th>
         </tr>
@@ -30,9 +27,6 @@
         <% @events.order_by(:created_at.desc).limit(15).each do |event| %>
         <tr>
           <td><strong><%= event.service -%></strong></td>
-          <!--<td><%= type_label 'type', event.type -%></td>-->
-          <!--<td><%= type_label 'state', event.state -%></td>-->
-          <!--<td><%= type_label 'action', event.action -%></td>-->
           <td><%= event.message -%></td>
           <td><%= event.created_at.strftime('%m-%d %H:%M:%S') -%></td>
         </tr>
@@ -41,5 +35,14 @@
     </table>
     <% end %>
   </div>
-  <div class="panel-footer"><i class="fa fa-star-o add-favorite"></i><span class="pull-right"><%= link_to 'See more &nbsp; <i class="fa fa-chevron-right"></i>'.html_safe, events_path(server_id: @server.id), style: 'color:#656565;' -%></span></div>
+  <div class="panel-footer">
+    <div class="row">
+      <div class="col-sm-6">
+        <% if page != 'dashboard' %><input type="checkbox" class="switch_checkbox"<%= portlet.dashboard_portlets.count > 0 ? ' checked="true"' : '' -%> /><% end %>
+      </div>
+      <div class="col-sm-6 text-right">
+        <%= link_to 'See more &nbsp; <i class="fa fa-chevron-right"></i>'.html_safe, events_path(server_id: @server.id), style: 'color:#656565;' -%>
+      </div>
+    </div>
+  </div>
 </div>

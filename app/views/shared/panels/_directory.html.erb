@@ -13,7 +13,16 @@
       <% end %>
     </div>
   </div>
-  <div class="panel-footer"><i class="fa fa-star-o add-favorite"></i><span class="pull-right"><button data-toggle="modal" data-target="#modal-<%= portlet.id -%>" style="background:none;border:none;padding:0;">See more &nbsp; <i class="fa fa-external-link"></i></button></span></div>
+  <div class="panel-footer">
+    <div class="row">
+      <div class="col-sm-6">
+        <% if page != 'dashboard' %><input type="checkbox" class="switch_checkbox"<%= portlet.dashboard_portlets.count > 0 ? ' checked="true"' : '' -%> /><% end %>
+      </div>
+      <div class="col-sm-6 text-right">
+        <button data-toggle="modal" data-target="#modal-<%= portlet.id -%>" style="background:none;border:none;padding:0;">See more &nbsp; <i class="fa fa-external-link"></i></button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div id="modal-<%= portlet.id -%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" class="modal fade">
@@ -26,7 +35,6 @@
       <div class="modal-body"><%= portlet.inspect -%></div>
       <div class="modal-footer">
         <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
-        <!--button type="button" class="btn btn-primary">Save changes</button-->
       </div>
     </div>
   </div>

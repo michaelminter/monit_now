@@ -24,6 +24,7 @@ class Server
   belongs_to :account
   has_many   :portlets
   has_many   :events
+  has_many   :dashboard_portlets
 
   after_create :create_events_portlet
 

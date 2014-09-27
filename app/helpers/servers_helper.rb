@@ -16,25 +16,25 @@ module ServersHelper
     current_service.created_at > 30.minutes.ago ? '#5BAB41' : '#6E6E6E'
   end
 
-  def call_service(portlet)
+  def call_service(portlet, page='default')
     case portlet.type.to_i
       when 0
         # https://mmonit.com/monit/documentation/#filesystem_flags_testing
-        render :partial => 'shared/panels/filesystem', locals: { portlet: portlet }
+        render :partial => 'shared/panels/filesystem', locals: { portlet: portlet, page: page }
       when 1
-        render :partial => 'shared/panels/directory', locals: { portlet: portlet }
+        render :partial => 'shared/panels/directory', locals: { portlet: portlet, page: page }
       when 2
-        render :partial => 'shared/panels/file', locals: { portlet: portlet }
+        render :partial => 'shared/panels/file', locals: { portlet: portlet, page: page }
       when 3
-        render :partial => 'shared/panels/process', locals: { portlet: portlet }
+        render :partial => 'shared/panels/process', locals: { portlet: portlet, page: page }
       when 4
-        render :partial => 'shared/panels/host', locals: { portlet: portlet }
+        render :partial => 'shared/panels/host', locals: { portlet: portlet, page: page }
       when 5
-        render :partial => 'shared/panels/system', locals: { portlet: portlet }
+        render :partial => 'shared/panels/system', locals: { portlet: portlet, page: page }
       when 7
-        render :partial => 'shared/panels/program', locals: { portlet: portlet }
+        render :partial => 'shared/panels/program', locals: { portlet: portlet, page: page }
       when 100
-        render :partial => 'shared/panels/events', locals: { portlet: portlet }
+        render :partial => 'shared/panels/events', locals: { portlet: portlet, page: page }
       else
         # err
     end

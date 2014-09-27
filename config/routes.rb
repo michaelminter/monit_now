@@ -24,9 +24,13 @@ Rails.application.routes.draw do
 
   get 'dashboard' => 'dashboard#index', as: :dashboard
 
-  post 'portlets/reorder' => 'portlets#reorder'
+  post 'portlets/reorder' => 'portlets#reorder_server'
+  post 'portlets/dashboard/reorder' => 'portlets#reorder_dashboard'
 
   get 'confirm_email' => 'accounts#confirm', as: :confirm_email
+
+  post 'dashboard_portlets' => 'dashboard_portlets#create', as: :create_dashboard_portlet
+  post 'dashboard_portlets/delete' => 'dashboard_portlets#delete', as: :delete_dashboard_portlet
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

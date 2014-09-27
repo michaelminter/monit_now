@@ -13,5 +13,14 @@
       <% end %>
     </div>
   </div>
-  <div class="panel-footer"><i class="fa fa-star-o add-favorite"></i><span class="pull-right">See more &nbsp; <i class="fa fa-external-link"></i></span></div>
+  <div class="panel-footer">
+    <div class="row">
+      <div class="col-sm-6">
+        <% if page != 'dashboard' %><input type="checkbox" class="switch_checkbox"<%= portlet.dashboard_portlets.count > 0 ? ' checked="true"' : '' -%> /><% end %>
+      </div>
+      <div class="col-sm-6 text-right">
+        <div class="text-right">See more &nbsp; <i class="fa fa-external-link"></i></div>
+      </div>
+    </div>
+  </div>
 </div>

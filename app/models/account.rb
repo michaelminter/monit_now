@@ -13,6 +13,7 @@ class Account
   has_many   :servers
   has_many   :activities
   has_many   :events
+  has_many   :dashboard_portlets
 
   validates_presence_of :account_type_id
 
