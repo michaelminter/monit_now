@@ -4,6 +4,7 @@
     <a href="javascript:void(0);" data-perform="panel-collapse" data-toggle="tooltip" title="" class="pull-right" data-original-title="Collapse Panel">
       <em class="fa fa-minus"></em>
     </a>
+    <%= link_to '<em class="fa fa-gear"></em>'.html_safe, service_path(portlet.id), class: 'pull-right', title: 'Service' -%>
   </div>
   <div class="panel-body">
     <!-- Bar chart-->

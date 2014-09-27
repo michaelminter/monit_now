@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'services/:id' => 'services#show', as: :service
+
   get 'events/index'
 
   resources :account_types
