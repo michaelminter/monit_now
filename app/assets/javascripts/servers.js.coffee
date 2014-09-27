@@ -11,6 +11,7 @@ $(function(){
       'size' : 'mini',
       'onText' : '<em class="fa fa-star"></em>',
       'offText' : '<em class="fa fa-star-o"></em>',
+      'onColor' : 'default',
       'onSwitchChange' : function(event, state) {
           var id = $(this).parents('.panel')[0].id;
           if (state == true) {
