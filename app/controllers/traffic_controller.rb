@@ -14,8 +14,6 @@ class TrafficController < ApplicationController
 
       if activity_allowed(account, content_length)
         xml_logger.info(xml)
-        logger.info xml
-        logger.info data
         begin
           # Find server
           server = Server.where({ :account_id => account.id, :ip => ip }).first
