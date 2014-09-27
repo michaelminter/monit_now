@@ -1192,7 +1192,7 @@ fieldset[disabled] .btn-pink.active {
 .panel-heading > a[data-perform] {
   display: inline-block;
   color: #fff;
-  width: 2em;
+  width: 21px;
   text-align: center;
 }
 .panel-default .panel-heading > a[data-perform] {

@@ -1,6 +1,7 @@
 <div id="<%= portlet.id -%>" class="panel panel-<%= panel_color(portlet.current_service) %>" data-id="<%= portlet.id -%>">
   <div class="panel-heading portlet-handler">
     <em class="fa fa-hdd-o"></em> <%= portlet.name -%>
+    <a href="javascript:void(0);" data-perform="panel-remove" title="Close" class="pull-right"><em class="fa fa-close"></em></a>
     <a href="javascript:void(0);" data-perform="panel-collapse" data-toggle="tooltip" title="" class="pull-right" data-original-title="Collapse Panel">
       <em class="fa fa-minus"></em>
     </a>
