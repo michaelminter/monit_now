@@ -74,6 +74,16 @@
         </div>
       </div>
 
+      <div class="form-group">
+        <input type="checkbox" id="has_coupon_code_checkbox" />
+        Do you have a coupon?
+      </div>
+
+      <div class="form-group" id="has_coupon_code_container" style="display:none;">
+        <label>Coupon Code</label>
+        <input type="text" size="20" data-stripe="coupon" class="form-control" id="data_stripe_coupon" />
+      </div>
+
       <button type="submit" class="btn btn-primary">Pay Now</button>
     </div>
     <div class="col-md-4"></div>
