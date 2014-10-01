@@ -21,7 +21,7 @@ class TrafficController < ApplicationController
             server = Server.create(server_mapping(account, ip, data[:monit]))
           end
           # Create services
-          if data[:monit][:services].present? || data[:monit][:services].present?
+          if data[:monit][:services].present? || data[:monit][:service].present?
             create_portlets_and_services(account, server, data[:monit][:services].nil? ? data[:monit][:service] : data[:monit][:services][:service])
           end
           # Create events
@@ -30,6 +30,7 @@ class TrafficController < ApplicationController
           end
           render :nothing => true, status: 200 # Okay
         rescue Exception => e
+          Rollbar.report_message(data)
           Rollbar.report_exception(e)
           render :nothing => true, status: 417 # Expectation Failed
         end
