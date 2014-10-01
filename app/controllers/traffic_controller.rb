@@ -22,8 +22,7 @@ class TrafficController < ApplicationController
           end
           # Create services
           if data[:monit][:services].present? || data[:monit][:services].present?
-            p data
-            create_portlets_and_services(account, server, data[:monit][:services].nil? ? data[:monit][:services] : data[:monit][:services][:service])
+            create_portlets_and_services(account, server, data[:monit][:services].nil? ? data[:monit][:service] : data[:monit][:services][:service])
           end
           # Create events
           if data[:monit][:event].present?
