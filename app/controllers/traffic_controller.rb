@@ -36,6 +36,7 @@ class TrafficController < ApplicationController
         end
       end
     else
+      Rollbar.report_message('Account reached data usage limit')
       render :nothing => true, status: 426 # Upgrade Required
     end
   end
