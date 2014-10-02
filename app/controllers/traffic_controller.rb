@@ -36,7 +36,6 @@ class TrafficController < ApplicationController
         end
       end
     else
-      Rollbar.report_message('Account reached data usage limit')
       render :nothing => true, status: 426 # Upgrade Required
     end
   end
@@ -56,13 +55,14 @@ class TrafficController < ApplicationController
     new_amount_total = activity_today.amount_total + content_length
 
     # Check data length allowance
-    if new_amount_total > account.account_type.data_limit
+    if new_amount_total > activity_today.allowance
       # if within less than one hour
       # send notification to account owner
       # save server
       # save services
       # else
       # Upgrade Required
+      Rollbar.report_message("Account #{account.name} at #{new_amount_total}")
       return false
       # end
     else
