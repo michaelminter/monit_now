@@ -36,7 +36,7 @@ class TrafficController < ApplicationController
         end
       end
     else
-      render xml: '', status: 426 # Upgrade Required
+      render xml: '', status: 507
     end
   end
 
