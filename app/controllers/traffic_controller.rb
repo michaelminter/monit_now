@@ -28,15 +28,15 @@ class TrafficController < ApplicationController
           if data[:monit][:event].present?
             create_events(account, server, data[:monit][:event])
           end
-          render :nothing => true
+          render xml: ''
         rescue Exception => e
           Rollbar.report_message(data)
           Rollbar.report_exception(e)
-          render :nothing => true, status: 417 # Expectation Failed
+          render xml: '', status: 417 # Expectation Failed
         end
       end
     else
-      render :nothing => true, status: 426 # Upgrade Required
+      render xml: '', status: 426 # Upgrade Required
     end
   end
 
