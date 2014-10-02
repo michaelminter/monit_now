@@ -19,6 +19,7 @@ class AccountsController < ApplicationController
     @account = Account.new
     # @account.users.build # build a blank user or the child form won't display
     @account_types = AccountType.all
+    @account_default = params[:plan].nil? ? '' : params[:plan]
 
     render layout: 'devise'
   end

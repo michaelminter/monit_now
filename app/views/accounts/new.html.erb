@@ -10,8 +10,8 @@
       <div class="form-group">
         <label>Account Type</label>
         <select name="account_type_id" class="form-control">
-          <% AccountType.all.each do |type| %>
-            <option value="<%= type.id -%>"><%= type.name -%> - $<%= type.price -%></option>
+          <% AccountType.all.order_by(:order.asc).each do |type| %>
+            <option value="<%= type.id -%>"<%= ' selected="selected"'.html_safe if @account_default == type.name %>><%= type.label -%> - $<%= type.price -%></option>
           <% end %>
         </select>
       </div>
