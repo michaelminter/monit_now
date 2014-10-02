@@ -45,8 +45,7 @@ class AccountsController < ApplicationController
     end
 
     # Get the credit card details submitted by the form
-    token    = params[:stripeToken]
-    customer = create_stripe_customer(token, user.email)
+    customer = create_stripe_customer(params[:stripeToken], user.email)
 
     @account.stripe_customer_id = customer.id
 
@@ -118,7 +117,7 @@ class AccountsController < ApplicationController
   end
 
   def confirm
-    # do nothing
+    render layout: 'message'
   end
 
   private
