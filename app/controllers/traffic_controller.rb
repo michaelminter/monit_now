@@ -28,7 +28,7 @@ class TrafficController < ApplicationController
           if data[:monit][:event].present?
             create_events(account, server, data[:monit][:event])
           end
-          render :text => 'Everything good', status: 200 # Okay
+          render :nothing => true
         rescue Exception => e
           Rollbar.report_message(data)
           Rollbar.report_exception(e)
