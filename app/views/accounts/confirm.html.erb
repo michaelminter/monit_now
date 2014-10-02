@@ -3,7 +3,12 @@
     <!--<h1>404</h1>-->
     <h2>Please Confirm Your Email</h2>
     <hr />
-    <p><%= notice -%></p>
+    <br />
+    <% if notice %>
+    <div class="alert alert-success">
+      <strong>Awesome!</strong> <%= notice -%>
+    </div>
+    <% end %>
     <p>In a moment you should receive an email with a confirmation link</p>
     <p>Click that link to confirm your email.</p>
     <p>For the time being:</p>
