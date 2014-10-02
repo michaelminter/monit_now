@@ -2,7 +2,7 @@ class TrafficController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    if request.headers['Content-Type'] == 'text/xml'
+    # if request.headers['Content-Type'] == 'text/xml'
       request.body.rewind # TODO: Find out what this does
 
       ip       = request.ip
@@ -34,10 +34,12 @@ class TrafficController < ApplicationController
           Rollbar.report_exception(e)
           render xml: '', status: 417 # Expectation Failed
         end
+      else
+        render xml: '', status: 507 # insufficient storage
       end
-    else
-      render xml: '', status: 507
-    end
+    # else
+    #   render xml: '', status: 426
+    # end
   end
 
   private
