@@ -156,6 +156,8 @@ GEM
       rdoc (~> 4.0)
     sendgrid (1.2.0)
       json
+    session_off (0.5.1)
+      actionpack (>= 2.3)
     simple_form (3.0.2)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
@@ -231,6 +233,7 @@ DEPENDENCIES
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   sendgrid (= 1.2.0)
+  session_off
   simple_form (= 3.0.2)
   spring
   stripe (= 1.15.0)

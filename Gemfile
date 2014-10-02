@@ -22,6 +22,7 @@ gem 'nori',          '2.4.0'
 gem 'rails-timeago', '~> 2.0'
 gem 'rollbar',       '~> 1.0.0'
 gem 'sendgrid',      '1.2.0'
+gem 'session_off'
 gem 'simple_form',   '3.0.2'
 gem 'stripe',        '1.15.0'
 
