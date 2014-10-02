@@ -3,6 +3,8 @@ class AccountsController < ApplicationController
 
   layout 'devise'
 
+  force_ssl if: :ssl_configured?
+
   # GET /accounts
   # GET /accounts.json
   def index
@@ -146,5 +148,9 @@ class AccountsController < ApplicationController
         :currency => 'usd',
         :customer => customer_id
     })
+  end
+
+  def ssl_configured?
+    !Rails.env.development?
   end
 end
