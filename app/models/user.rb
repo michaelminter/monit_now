@@ -39,9 +39,10 @@ class User
 
   field :full_name,  type: String
 
+  index({ email: 1 }, { unique: true, background: true })
+
   has_many :account_users
 
-  validates_uniqueness_of :email
   validates_presence_of   :full_name
 
   def accounts
