@@ -1,6 +1,8 @@
 class TrafficController < ApplicationController
   skip_before_action :verify_authenticity_token
 
+  session :off
+
   def index
     # if request.headers['Content-Type'] == 'text/xml'
       request.body.rewind # TODO: Find out what this does
